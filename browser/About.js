@@ -1,8 +1,10 @@
 import React from 'react';
 
 const About = () => (
-  <div>
-    This is the About Page.
+  <div className="background">
+    <div className="organize-container">
+      This is the About Page.
+    </div>
   </div>
 )
 

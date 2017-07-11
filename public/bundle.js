@@ -42035,6 +42035,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRedux = __webpack_require__(209);
+	
+	var _reducer = __webpack_require__(462);
+	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
@@ -42063,35 +42067,75 @@
 	  function Home() {
 	    _classCallCheck(this, Home);
 	
-	    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+	
+	    _this.state = {
+	      value: ''
+	    };
+	    _this.handleChange = _this.handleChange.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(Home, [{
-	    key: 'Constructor',
-	    value: function Constructor() {
-	      Super();
-	      this.state = {
-	        value: '',
-	        tasks: []
-	      };
+	    key: 'handleChange',
+	    value: function handleChange(event) {
+	      this.setState({
+	        value: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(event) {
+	      event.preventDefault();
+	      var input = this.state.value;
+	
+	      // Clear the user input field upon submit
+	      this.setState({
+	        value: ''
+	      });
+	
+	      // Add the new task to the redux store
+	      this.props.add(input);
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('div', null, 'This is the to do list.');
+	      console.log("GLADYS", this.props.tasks);
+	      return _react2.default.createElement('div', { className: 'background' }, _react2.default.createElement('div', { className: 'organize-container' }, _react2.default.createElement('h2', null, 'Add a task'), _react2.default.createElement('form', { onSubmit: this.handleSubmit }, _react2.default.createElement('input', {
+	        type: 'text',
+	        value: this.state.value,
+	        onChange: this.handleChange
+	      }), _react2.default.createElement('div', { id: 'button-container' }, _react2.default.createElement('input', { type: 'submit', value: 'Submit', id: 'button' }))), _react2.default.createElement('ul', null, this.props.tasks.map(function (task, index) {
+	        return _react2.default.createElement('li', { key: index }, task);
+	      }))));
 	    }
 	  }]);
 	
 	  return Home;
 	}(_react2.default.Component);
 	
-	exports.default = Home;
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    tasks: state.tasks
+	  };
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return {
+	    add: function add(input) {
+	      dispatch((0, _reducer.add)(input));
+	    }
+	  };
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);
 
 /***/ }),
 /* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -42106,7 +42150,7 @@
 	}
 	
 	var About = function About() {
-	  return _react2.default.createElement('div', null, 'This is the About Page.');
+	  return _react2.default.createElement("div", { className: "background" }, _react2.default.createElement("div", { className: "organize-container" }, "This is the About Page."));
 	};
 	
 	exports.default = About;
