@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {add, drop, replace} from './reducer';
+import {drop, replace} from './reducer';
 
 class Task extends React.Component {
   constructor(props) {
@@ -15,11 +15,13 @@ class Task extends React.Component {
   }
 
   handleDelete(event) {
+    event.preventDefault();
     let index = event.target.value;
     this.props.drop(index);
   }
 
   handleEdit(event) {
+    event.preventDefault();
     let index = event.target.value;
     let value = this.state.value;
     this.setState({
@@ -35,7 +37,6 @@ class Task extends React.Component {
       value: event.target.value
     })
   }
-
 
   render() {
     let task = this.state.value;
@@ -55,9 +56,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  add: input => {
-    dispatch(add(input))
-  },
   drop: index => {
     dispatch(drop(index))
   },

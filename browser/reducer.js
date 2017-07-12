@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) => {
 
     case DROP:
       return Object.assign({}, state, {
-        tasks: state.tasks.filter((value, index) => index !== action.payload)
+        tasks: state.tasks.filter((task, index) => index !== action.payload)
       });
 
     case REPLACE:

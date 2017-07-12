@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {add, drop} from './reducer';
 import Task from './Task';
 
 class List extends React.Component {
@@ -23,13 +22,4 @@ const mapStateToProps = state => ({
   tasks: state.tasks
 })
 
-const mapDispatchToProps = dispatch => ({
-  add: input => {
-    dispatch(add(input))
-  },
-  drop: index => {
-    dispatch(drop(index))
-  }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(List)
+export default connect(mapStateToProps)(List)

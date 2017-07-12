@@ -42117,24 +42117,15 @@
 	  return Home;
 	}(_react2.default.Component);
 	
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    tasks: state.tasks
-	  };
-	};
-	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    add: function add(input) {
 	      dispatch((0, _reducer.add)(input));
-	    },
-	    drop: function drop(index) {
-	      dispatch((0, _reducer.drop)(index));
 	    }
 	  };
 	};
 	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);
+	exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Home);
 
 /***/ }),
 /* 458 */
@@ -42162,7 +42153,7 @@
 	
 	    case DROP:
 	      return Object.assign({}, state, {
-	        tasks: state.tasks.filter(function (value, index) {
+	        tasks: state.tasks.filter(function (task, index) {
 	          return index !== action.payload;
 	        })
 	      });
@@ -42245,8 +42236,6 @@
 	
 	var _reactRedux = __webpack_require__(209);
 	
-	var _reducer = __webpack_require__(458);
-	
 	var _Task = __webpack_require__(464);
 	
 	var _Task2 = _interopRequireDefault(_Task);
@@ -42300,18 +42289,7 @@
 	  };
 	};
 	
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	  return {
-	    add: function add(input) {
-	      dispatch((0, _reducer.add)(input));
-	    },
-	    drop: function drop(index) {
-	      dispatch((0, _reducer.drop)(index));
-	    }
-	  };
-	};
-	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(List);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(List);
 
 /***/ }),
 /* 460 */
@@ -42475,12 +42453,14 @@
 	  _createClass(Task, [{
 	    key: 'handleDelete',
 	    value: function handleDelete(event) {
+	      event.preventDefault();
 	      var index = event.target.value;
 	      this.props.drop(index);
 	    }
 	  }, {
 	    key: 'handleEdit',
 	    value: function handleEdit(event) {
+	      event.preventDefault();
 	      var index = event.target.value;
 	      var value = this.state.value;
 	      this.setState({
@@ -42517,9 +42497,6 @@
 	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
-	    add: function add(input) {
-	      dispatch((0, _reducer.add)(input));
-	    },
 	    drop: function drop(index) {
 	      dispatch((0, _reducer.drop)(index));
 	    },

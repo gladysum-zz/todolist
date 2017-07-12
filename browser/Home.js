@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {add, drop} from './reducer';
+import {add} from './reducer';
 import List from './List';
 
 class Home extends React.Component {
@@ -33,7 +33,6 @@ class Home extends React.Component {
     this.props.add(input);
    }
 
-
   render() {
     return (
       <div className="background">
@@ -61,17 +60,10 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  tasks: state.tasks
-})
-
 const mapDispatchToProps = dispatch => ({
   add: input => {
     dispatch(add(input))
-  },
-  drop: index => {
-    dispatch(drop(index))
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(null, mapDispatchToProps)(Home)
