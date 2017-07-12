@@ -1,0 +1,69 @@
+import React from 'react';
+import {connect} from 'react-redux';
+import {add, drop, replace} from './reducer';
+
+class Task extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: this.props.task,
+      disabled: true
+    }
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleDelete(event) {
+    let index = event.target.value;
+    this.props.drop(index);
+  }
+
+  handleEdit(event) {
+    let index = event.target.value;
+    let value = this.state.value;
+    this.setState({
+      disabled: !this.state.disabled
+    })
+    if (!this.state.disabled) {
+      this.props.replace(index, value);
+    }
+  }
+
+  handleChange(event) {
+    this.setState({
+      value: event.target.value
+    })
+  }
+
+
+  render() {
+    let task = this.state.value;
+    let index = this.props.index;
+    return (
+      <li key={index}>
+        <button value={index} onClick={this.handleDelete}> Delete </button>
+        <button value={index} onClick={this.handleEdit}> {this.state.disabled ? 'Edit' : 'Save'} </button>
+        <input type='text' name={index} value={this.state.value} disabled={this.state.disabled} onChange={this.handleChange} />
+      </li>
+    )
+  }
+}
+
+const mapStateToProps = state => ({
+  tasks: state.tasks
+})
+
+const mapDispatchToProps = dispatch => ({
+  add: input => {
+    dispatch(add(input))
+  },
+  drop: index => {
+    dispatch(drop(index))
+  },
+  replace: (index, value) => {
+    dispatch(replace(index, value))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Task)

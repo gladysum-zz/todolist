@@ -12,9 +12,15 @@ const reducer = (state = initialState, action) => {
       });
 
     case DROP:
-
       return Object.assign({}, state, {
         tasks: state.tasks.filter((value, index) => index !== action.payload)
+      });
+
+    case REPLACE:
+      let newIndex = action.payload.index;
+      let newValue = action.payload.value;
+      return Object.assign({}, state, {
+        tasks: state.tasks.map((task, index) => index === newIndex ? newValue : task)
       });
 
     default:
@@ -26,6 +32,7 @@ const reducer = (state = initialState, action) => {
 
 const ADD = 'ADD';
 const DROP = 'DROP';
+const REPLACE = 'REPLACE';
 
 /* ------------ ACTION CREATORS ------------------ */
 
@@ -37,6 +44,14 @@ export const add = input => ({
 export const drop = index => ({
   type: DROP,
   payload: Number(index)
+});
+
+export const replace = (index, value) => ({
+  type: REPLACE,
+  payload: {
+    index: Number(index),
+    value: value
+  }
 });
 
 

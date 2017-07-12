@@ -42161,10 +42161,18 @@
 	      });
 	
 	    case DROP:
-	
 	      return Object.assign({}, state, {
 	        tasks: state.tasks.filter(function (value, index) {
 	          return index !== action.payload;
+	        })
+	      });
+	
+	    case REPLACE:
+	      var newIndex = action.payload.index;
+	      var newValue = action.payload.value;
+	      return Object.assign({}, state, {
+	        tasks: state.tasks.map(function (task, index) {
+	          return index === newIndex ? newValue : task;
 	        })
 	      });
 	
@@ -42177,6 +42185,7 @@
 	
 	var ADD = 'ADD';
 	var DROP = 'DROP';
+	var REPLACE = 'REPLACE';
 	
 	/* ------------ ACTION CREATORS ------------------ */
 	
@@ -42191,6 +42200,16 @@
 	  return {
 	    type: DROP,
 	    payload: Number(index)
+	  };
+	};
+	
+	var replace = exports.replace = function replace(index, value) {
+	  return {
+	    type: REPLACE,
+	    payload: {
+	      index: Number(index),
+	      value: value
+	    }
 	  };
 	};
 	
@@ -42228,6 +42247,10 @@
 	
 	var _reducer = __webpack_require__(458);
 	
+	var _Task = __webpack_require__(464);
+	
+	var _Task2 = _interopRequireDefault(_Task);
+	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
@@ -42256,26 +42279,14 @@
 	  function List() {
 	    _classCallCheck(this, List);
 	
-	    var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this));
-	
-	    _this.handleDelete = _this.handleDelete.bind(_this);
-	    return _this;
+	    return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this));
 	  }
 	
 	  _createClass(List, [{
-	    key: 'handleDelete',
-	    value: function handleDelete(event) {
-	      var index = event.target.value;
-	      this.props.drop(index);
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-	
-	      console.log("this.props.tasks", this.props.tasks);
 	      return _react2.default.createElement('ul', null, this.props.tasks.length ? this.props.tasks.map(function (task, index) {
-	        return _react2.default.createElement('li', { key: index }, task, _react2.default.createElement('button', { value: index, onClick: _this2.handleDelete }, ' Delete '));
+	        return _react2.default.createElement(_Task2.default, { task: task, index: index });
 	      }) : null);
 	    }
 	  }]);
@@ -42390,6 +42401,135 @@
 	thunk.withExtraArgument = createThunkMiddleware;
 	
 	exports['default'] = thunk;
+
+/***/ }),
+/* 464 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	}();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(209);
+	
+	var _reducer = __webpack_require__(458);
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+	
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
+	var Task = function (_React$Component) {
+	  _inherits(Task, _React$Component);
+	
+	  function Task(props) {
+	    _classCallCheck(this, Task);
+	
+	    var _this = _possibleConstructorReturn(this, (Task.__proto__ || Object.getPrototypeOf(Task)).call(this, props));
+	
+	    _this.state = {
+	      value: _this.props.task,
+	      disabled: true
+	    };
+	    _this.handleDelete = _this.handleDelete.bind(_this);
+	    _this.handleEdit = _this.handleEdit.bind(_this);
+	    _this.handleChange = _this.handleChange.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(Task, [{
+	    key: 'handleDelete',
+	    value: function handleDelete(event) {
+	      var index = event.target.value;
+	      this.props.drop(index);
+	    }
+	  }, {
+	    key: 'handleEdit',
+	    value: function handleEdit(event) {
+	      var index = event.target.value;
+	      var value = this.state.value;
+	      this.setState({
+	        disabled: !this.state.disabled
+	      });
+	      if (!this.state.disabled) {
+	        this.props.replace(index, value);
+	      }
+	    }
+	  }, {
+	    key: 'handleChange',
+	    value: function handleChange(event) {
+	      this.setState({
+	        value: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var task = this.state.value;
+	      var index = this.props.index;
+	      return _react2.default.createElement('li', { key: index }, _react2.default.createElement('button', { value: index, onClick: this.handleDelete }, ' Delete '), _react2.default.createElement('button', { value: index, onClick: this.handleEdit }, ' ', this.state.disabled ? 'Edit' : 'Save', ' '), _react2.default.createElement('input', { type: 'text', name: index, value: this.state.value, disabled: this.state.disabled, onChange: this.handleChange }));
+	    }
+	  }]);
+	
+	  return Task;
+	}(_react2.default.Component);
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    tasks: state.tasks
+	  };
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return {
+	    add: function add(input) {
+	      dispatch((0, _reducer.add)(input));
+	    },
+	    drop: function drop(index) {
+	      dispatch((0, _reducer.drop)(index));
+	    },
+	    replace: function replace(index, value) {
+	      dispatch((0, _reducer.replace)(index, value));
+	    }
+	  };
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Task);
 
 /***/ })
 /******/ ]);
