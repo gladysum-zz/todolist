@@ -42074,7 +42074,8 @@
 	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
 	
 	    _this.state = {
-	      value: ''
+	      value: '',
+	      error: ''
 	    };
 	    _this.handleChange = _this.handleChange.bind(_this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -42086,22 +42087,29 @@
 	    key: 'handleChange',
 	    value: function handleChange(event) {
 	      this.setState({
-	        value: event.target.value
+	        value: event.target.value,
+	        error: ''
 	      });
 	    }
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
 	      event.preventDefault();
-	      var input = this.state.value;
+	      if (!this.state.value) {
+	        this.setState({
+	          error: "Please enter a task."
+	        });
+	      } else {
+	        var input = this.state.value;
 	
-	      // Clear the user input field upon submit
-	      this.setState({
-	        value: ''
-	      });
+	        // Clear the user input field upon submit
+	        this.setState({
+	          value: ''
+	        });
 	
-	      // Add the new task to the redux store
-	      this.props.add(input);
+	        // Add the new task to the redux store
+	        this.props.add(input);
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -42110,7 +42118,7 @@
 	        type: 'text',
 	        value: this.state.value,
 	        onChange: this.handleChange
-	      }), _react2.default.createElement('div', { id: 'button-container' }, _react2.default.createElement('input', { type: 'submit', value: 'Submit', id: 'button' }))), _react2.default.createElement(_List2.default, null)));
+	      }), _react2.default.createElement('div', { id: 'button-container' }, _react2.default.createElement('input', { type: 'submit', value: 'Submit', id: 'button' })), _react2.default.createElement('div', null, this.state.error ? this.state.error : null)), _react2.default.createElement(_List2.default, null)));
 	    }
 	  }]);
 	

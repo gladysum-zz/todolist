@@ -7,7 +7,8 @@ class Home extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: ''
+      value: '',
+      error: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,22 +17,32 @@ class Home extends React.Component {
 
   handleChange(event) {
     this.setState({
-      value: event.target.value
+      value: event.target.value,
+      error: ''
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    let input = this.state.value;
+    if (!this.state.value) {
+      this.setState({
+        error: "Please enter a task."
+      })
+    }
+    else {
+       let input = this.state.value;
 
-    // Clear the user input field upon submit
-    this.setState({
-      value: ''
-    });
+       // Clear the user input field upon submit
+       this.setState({
+         value: ''
+       });
 
-    // Add the new task to the redux store
-    this.props.add(input);
-   }
+       // Add the new task to the redux store
+       this.props.add(input);
+      }
+    }
+
+
 
   render() {
     return (
@@ -49,6 +60,10 @@ class Home extends React.Component {
 
             <div id="button-container">
               <input type="submit" value="Submit" id="button"/>
+            </div>
+
+            <div>
+              {this.state.error ? this.state.error : null}
             </div>
 
           </form>
