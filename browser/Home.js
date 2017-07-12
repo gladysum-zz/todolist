@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {add} from './reducer';
+import {add, drop} from './reducer';
+import List from './List';
 
 class Home extends React.Component {
   constructor() {
@@ -10,6 +11,7 @@ class Home extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   handleChange(event) {
@@ -31,8 +33,8 @@ class Home extends React.Component {
     this.props.add(input);
    }
 
+
   render() {
-    console.log("GLADYS", this.props.tasks)
     return (
       <div className="background">
         <div className="organize-container">
@@ -51,17 +53,8 @@ class Home extends React.Component {
             </div>
 
           </form>
+          <List />
 
-          <ul>
-            {this.props.tasks.map((task, index)=>(<li key={index}>{task}</li>))}
-
-
-
-
-
-
-
-          </ul>
         </div>
       </div>
     )
@@ -75,6 +68,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   add: input => {
     dispatch(add(input))
+  },
+  drop: index => {
+    dispatch(drop(index))
   }
 })
 

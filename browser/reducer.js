@@ -9,7 +9,13 @@ const reducer = (state = initialState, action) => {
     case ADD:
       return Object.assign({}, state, {
         tasks: state.tasks.concat(action.payload)
-      })
+      });
+
+    case DROP:
+
+      return Object.assign({}, state, {
+        tasks: state.tasks.filter((value, index) => index !== action.payload)
+      });
 
     default:
       return state;
@@ -19,13 +25,20 @@ const reducer = (state = initialState, action) => {
 /* ----------------- ACTIONS ------------------ */
 
 const ADD = 'ADD';
+const DROP = 'DROP';
 
 /* ------------ ACTION CREATORS ------------------ */
 
 export const add = input => ({
   type: ADD,
   payload: input
-})
+});
+
+export const drop = index => ({
+  type: DROP,
+  payload: Number(index)
+});
+
 
 /* ------------------ DEFAULT EXPORT ------------------ */
 
