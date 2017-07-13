@@ -11,7 +11,7 @@ router.post("/tasks", (req, res, next)=>{
     res.status(404).message("content cannot be null")
   }
   else {
-    Task.create(req.body.input)
+    Task.create({name: req.body.input})
     .then(task=>res.json(task))
     .catch(next);
   }

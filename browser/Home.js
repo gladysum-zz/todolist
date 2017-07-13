@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {add} from './reducer';
+import axios from 'axios';
 import List from './List';
 
 class Home extends React.Component {
@@ -37,8 +38,13 @@ class Home extends React.Component {
          value: ''
        });
 
-       // Add the new task to the redux store
-       this.props.add(input);
+       // Send input to database; add the new task to the redux store
+       axios.post('/tasks', {input: input})
+       .then(res=>{
+          console.log("res.data.name", res.data.name)
+         this.props.add(res.data.name);
+       })
+       .catch(error=>{console.log(error)});
       }
     }
 
