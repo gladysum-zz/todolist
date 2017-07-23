@@ -12,9 +12,9 @@
   "license": "ISC",
   "jest": {
     "collectCoverage": true,
-    "collectCoverageOnlyFrom": {
-      "browser": true
-    },
+    "collectCoverageFrom": [
+      "**/browser/**"
+    ],
     "transform": {".*": "<rootDir>/node_modules/babel-jest"},
     "moduleFileExtensions": [
       "js"
