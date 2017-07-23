@@ -30,9 +30,9 @@ const reducer = (state = initialState, action) => {
 
 /* ----------------- ACTIONS ------------------ */
 
-const ADD = 'ADD';
-const DROP = 'DROP';
-const REPLACE = 'REPLACE';
+export const ADD = 'ADD';
+export const DROP = 'DROP';
+export const REPLACE = 'REPLACE';
 
 /* ------------ ACTION CREATORS ------------------ */
 
