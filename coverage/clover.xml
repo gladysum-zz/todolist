@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1500778682713" clover="3.2.0">
-  <project timestamp="1500778682713" name="All files">
+<coverage generated="1500839554199" clover="3.2.0">
+  <project timestamp="1500839554199" name="All files">
     <metrics statements="116" coveredstatements="19" conditionals="132" coveredconditionals="7" methods="59" coveredmethods="7" elements="307" coveredelements="33" complexity="0" loc="116" ncloc="116" packages="1" files="9" classes="9">
       <file name="About.js" path="/Users/Gladys/todolist/browser/About.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
       </file>
       <file name="App.js" path="/Users/Gladys/todolist/browser/App.js">
         <metrics statements="9" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
