@@ -45441,7 +45441,7 @@
 	    value: function handleEdit(event) {
 	      event.preventDefault();
 	      var index = this.props.index;
-	      var value = this.state.value;
+	      var value = this.props.task;
 	      this.setState({
 	        disabled: !this.state.disabled
 	      });
@@ -45471,7 +45471,7 @@
 	        className: 'task-field',
 	        type: 'text',
 	        name: this.props.index,
-	        value: this.state.value,
+	        value: this.props.task,
 	        disabled: this.state.disabled,
 	        onChange: this.handleChange
 	      }));

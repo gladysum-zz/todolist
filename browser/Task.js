@@ -23,7 +23,7 @@ class Task extends React.Component {
   handleEdit(event) {
     event.preventDefault();
     let index = this.props.index;
-    let value = this.state.value;
+    let value = this.props.task;
     this.setState({
       disabled: !this.state.disabled
     })
@@ -68,7 +68,7 @@ class Task extends React.Component {
             className="task-field"
             type='text'
             name={this.props.index}
-            value={this.state.value}
+            value={this.props.task}
             disabled={this.state.disabled}
             onChange={this.handleChange}
           />
