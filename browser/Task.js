@@ -43,9 +43,38 @@ class Task extends React.Component {
     let index = this.props.index;
     return (
       <li key={index}>
-        <button value={index} onClick={this.handleDelete}> Delete </button>
-        <button value={index} onClick={this.handleEdit}> {this.state.disabled ? 'Edit' : 'Save'} </button>
-        <input type='text' name={index} value={this.state.value} disabled={this.state.disabled} onChange={this.handleChange} />
+
+        <button
+          className="delete-button"
+          id="small-button"
+          value={index}
+          onClick={this.handleDelete}>
+          Delete
+        </button>
+
+        <button
+          className="edit-button"
+          id="small-button"
+          value={index}
+          onClick={this.handleEdit}>
+          {this.state.disabled ? 'Edit' : 'Save'}
+        </button>
+
+        {this.state.disabled ?
+
+          <div className="task-field">
+            {this.state.value}
+          </div> :
+
+          <input
+            className="task-field"
+            type='text'
+            name={index}
+            value={this.state.value}
+            disabled={this.state.disabled}
+            onChange={this.handleChange}
+          />
+        }
       </li>
     )
   }

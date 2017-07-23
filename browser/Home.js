@@ -54,25 +54,34 @@ class Home extends React.Component {
     return (
       <div className="background">
         <div className="organize-container">
-          <h2>Add a task</h2>
+
+          <h1>Add a task</h1>
 
           <form onSubmit={this.handleSubmit}>
 
-            <input
+            <textarea
+              className="input-field"
               type="text"
               value={this.state.value}
               onChange={this.handleChange}
             />
 
-            <div id="button-container">
-              <input type="submit" value="Submit" id="button"/>
-            </div>
-
-            <div>
+            <div className="input-error">
               {this.state.error ? this.state.error : null}
             </div>
 
+            <div id="button-container">
+              <input
+                type="submit"
+                value="Submit"
+                id="button"
+              />
+            </div>
+
           </form>
+
+          <h1>My Tasks</h1>
+
           <List />
 
         </div>
