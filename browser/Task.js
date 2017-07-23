@@ -8,7 +8,7 @@ class Task extends React.Component {
     this.state = {
       value: this.props.task,
       disabled: true
-    }
+    };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -16,13 +16,13 @@ class Task extends React.Component {
 
   handleDelete(event) {
     event.preventDefault();
-    let index = event.target.value;
+    let index = this.props.index;
     this.props.drop(index);
   }
 
   handleEdit(event) {
     event.preventDefault();
-    let index = event.target.value;
+    let index = this.props.index;
     let value = this.state.value;
     this.setState({
       disabled: !this.state.disabled
@@ -35,19 +35,17 @@ class Task extends React.Component {
   handleChange(event) {
     this.setState({
       value: event.target.value
-    })
+    });
   }
 
   render() {
-    let task = this.state.value;
-    let index = this.props.index;
     return (
-      <li key={index}>
+      <li key={this.props.index}>
 
         <button
           className="delete-button"
           id="small-button"
-          value={index}
+          value={this.props.index}
           onClick={this.handleDelete}>
           Delete
         </button>
@@ -55,7 +53,7 @@ class Task extends React.Component {
         <button
           className="edit-button"
           id="small-button"
-          value={index}
+          value={this.props.index}
           onClick={this.handleEdit}>
           {this.state.disabled ? 'Edit' : 'Save'}
         </button>
@@ -63,13 +61,13 @@ class Task extends React.Component {
         {this.state.disabled ?
 
           <div className="task-field">
-            {this.state.value}
+            {this.props.task}
           </div> :
 
           <input
             className="task-field"
             type='text'
-            name={index}
+            name={this.props.index}
             value={this.state.value}
             disabled={this.state.disabled}
             onChange={this.handleChange}

@@ -9,14 +9,14 @@ class List extends React.Component {
 
   render() {
     return (
-      <ul>
+      <ol>
         {this.props.tasks.length ? this.props.tasks.map((task, index)=>(
           <Task
             task={task}
             index={index}
           />
         )) : "No tasks added."}
-      </ul>
+      </ol>
     )
   }
 }

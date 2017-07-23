@@ -41,7 +41,6 @@ class Home extends React.Component {
        // Send input to database; add the new task to the redux store
        axios.post('/tasks', {input: input})
        .then(res=>{
-          console.log("res.data.name", res.data.name)
          this.props.add(res.data.name);
        })
        .catch(error=>{console.log(error)});

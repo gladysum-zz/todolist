@@ -42115,7 +42115,6 @@
 	
 	        // Send input to database; add the new task to the redux store
 	        _axios2.default.post('/tasks', { input: input }).then(function (res) {
-	          console.log("res.data.name", res.data.name);
 	          _this2.props.add(res.data.name);
 	        }).catch(function (error) {
 	          console.log(error);
@@ -45340,7 +45339,7 @@
 	  _createClass(List, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('ul', null, this.props.tasks.length ? this.props.tasks.map(function (task, index) {
+	      return _react2.default.createElement('ol', null, this.props.tasks.length ? this.props.tasks.map(function (task, index) {
 	        return _react2.default.createElement(_Task2.default, {
 	          task: task,
 	          index: index
@@ -45434,14 +45433,14 @@
 	    key: 'handleDelete',
 	    value: function handleDelete(event) {
 	      event.preventDefault();
-	      var index = event.target.value;
+	      var index = this.props.index;
 	      this.props.drop(index);
 	    }
 	  }, {
 	    key: 'handleEdit',
 	    value: function handleEdit(event) {
 	      event.preventDefault();
-	      var index = event.target.value;
+	      var index = this.props.index;
 	      var value = this.state.value;
 	      this.setState({
 	        disabled: !this.state.disabled
@@ -45460,20 +45459,18 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var task = this.state.value;
-	      var index = this.props.index;
-	      return _react2.default.createElement('li', { key: index }, _react2.default.createElement('button', {
+	      return _react2.default.createElement('li', { key: this.props.index }, _react2.default.createElement('button', {
 	        className: 'delete-button',
 	        id: 'small-button',
-	        value: index,
+	        value: this.props.index,
 	        onClick: this.handleDelete }, 'Delete'), _react2.default.createElement('button', {
 	        className: 'edit-button',
 	        id: 'small-button',
-	        value: index,
-	        onClick: this.handleEdit }, this.state.disabled ? 'Edit' : 'Save'), this.state.disabled ? _react2.default.createElement('div', { className: 'task-field' }, this.state.value) : _react2.default.createElement('input', {
+	        value: this.props.index,
+	        onClick: this.handleEdit }, this.state.disabled ? 'Edit' : 'Save'), this.state.disabled ? _react2.default.createElement('div', { className: 'task-field' }, this.props.task) : _react2.default.createElement('input', {
 	        className: 'task-field',
 	        type: 'text',
-	        name: index,
+	        name: this.props.index,
 	        value: this.state.value,
 	        disabled: this.state.disabled,
 	        onChange: this.handleChange

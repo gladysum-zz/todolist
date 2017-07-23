@@ -22,12 +22,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/61</span>
+        <span class='fraction'>0/59</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/37</span>
+        <span class='fraction'>0/39</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/29</span>
+        <span class='fraction'>0/27</span>
       </div>
     </div>
   </div>
@@ -110,7 +110,34 @@
 65
 66
 67
-68</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -152,8 +179,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -187,7 +241,7 @@ class T<span class="cstat-no" title="statement not covered" ><span class="fstat-
 <span class="cstat-no" title="statement not covered" >    this.state = {</span>
       value: this.props.task,
       disabled: true
-    }
+    };
 <span class="cstat-no" title="statement not covered" >    this.handleDelete = this.handleDelete.bind(this);</span>
 <span class="cstat-no" title="statement not covered" >    this.handleEdit = this.handleEdit.bind(this);</span>
 <span class="cstat-no" title="statement not covered" >    this.handleChange = this.handleChange.bind(this);<span class="cstat-no" title="statement not covered" ></span></span>
@@ -195,13 +249,13 @@ class T<span class="cstat-no" title="statement not covered" ><span class="fstat-
 &nbsp;
   handleDelete(event) {
     ev<span class="cstat-no" title="statement not covered" >ent.preventDefault();</span>
-    let index = ev<span class="cstat-no" title="statement not covered" >ent.target.value;</span>
+    let index = th<span class="cstat-no" title="statement not covered" >is.props.index;</span>
     th<span class="cstat-no" title="statement not covered" >is.props.drop(index);</span>
   }<span class="fstat-no" title="function not covered" ></span>
 &nbsp;
   handleEdit(event) {
     ev<span class="cstat-no" title="statement not covered" >ent.preventDefault();</span>
-    let index = ev<span class="cstat-no" title="statement not covered" >ent.target.value;</span>
+    let index = th<span class="cstat-no" title="statement not covered" >is.props.index;</span>
     let value = th<span class="cstat-no" title="statement not covered" >is.state.value;</span>
     th<span class="cstat-no" title="statement not covered" >is.setState({</span>
       disabled: !this.state.disabled
@@ -214,17 +268,44 @@ class T<span class="cstat-no" title="statement not covered" ><span class="fstat-
   handleChange(event) {
     th<span class="cstat-no" title="statement not covered" >is.setState({</span>
       value: event.target.value
-    })
+    });
   }<span class="fstat-no" title="function not covered" ></span>
 &nbsp;
   render() {
-    let task = th<span class="cstat-no" title="statement not covered" >is.state.value;</span>
-    let index = th<span class="cstat-no" title="statement not covered" >is.props.index;</span>
     re<span class="cstat-no" title="statement not covered" >turn (</span>
-      &lt;li key={index}&gt;
-        &lt;button value={index} onClick={this.handleDelete}&gt; Delete &lt;/button&gt;
-        &lt;button value={index} onClick={this.handleEdit}&gt; {this.state.disabled ? 'Edit' : 'Save'} &lt;/button&gt;
-        &lt;input type='text' name={index} value={this.state.value} disabled={this.state.disabled} onChange={this.handleChange} /&gt;
+      &lt;li key={this.props.index}&gt;
+&nbsp;
+        &lt;button
+          className="delete-button"
+          id="small-button"
+          value={this.props.index}
+          onClick={this.handleDelete}&gt;
+          Delete
+        &lt;/button&gt;
+&nbsp;
+        &lt;button
+          className="edit-button"
+          id="small-button"
+          value={this.props.index}
+          onClick={this.handleEdit}&gt;
+          {this.state.disabled ? 'Edit' : 'Save'}
+        &lt;/button&gt;
+&nbsp;
+        {this.state.disabled ?
+&nbsp;
+          &lt;div className="task-field"&gt;
+            {this.props.task}
+          &lt;/div&gt; :
+&nbsp;
+          &lt;input
+            className="task-field"
+            type='text'
+            name={this.props.index}
+            value={this.state.value}
+            disabled={this.state.disabled}
+            onChange={this.handleChange}
+          /&gt;
+        }
       &lt;/li&gt;
     )
   }<span class="cstat-no" title="statement not covered" ></span>
@@ -250,7 +331,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Task)
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jul 23 2017 15:52:34 GMT-0400 (EDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jul 23 2017 19:06:18 GMT-0400 (EDT)
 </div>
 </div>
 <script src="prettify.js"></script>
