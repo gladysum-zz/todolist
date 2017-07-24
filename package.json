@@ -11,6 +11,7 @@
   "author": "Gladys Um",
   "license": "ISC",
   "jest": {
+    "verbose": false,
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/browser/**"
