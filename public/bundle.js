@@ -37176,7 +37176,7 @@
 	        value: this.props.index,
 	        onClick: this.handleDelete
 	      }, 'Delete'), _react2.default.createElement('button', {
-	        className: 'edit-button',
+	        className: this.state.disabled ? "edit-button" : "save-button",
 	        id: 'small-button',
 	        value: this.props.index,
 	        onClick: this.state.disabled ? this.handleEdit : this.handleSave

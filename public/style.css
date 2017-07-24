@@ -142,9 +142,16 @@
   height: 25px;
   vertical-align: top;
   width: 7%;
-
+  background-color: green;
 }
 
+.save-button {
+  display: inline-block;
+  height: 25px;
+  vertical-align: top;
+  width: 7%;
+
+}
 .task-read-only {
   display: inline-block;
   height: 23px;

@@ -1,6 +1,6 @@
 import Task from './Task';
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { Provider } from 'react-redux'
 import store from './store';
 
@@ -16,9 +16,10 @@ describe('Task Component', () => {
         />
       </Provider>
     );
-    const p = wrapper.find('.task-field');
+    const p = wrapper.find('.task-read-only');
     expect(p.text()).toBe('Buy Milk');
   });
+
 
   it('Edit button becomes Save button when clicked', () => {
     const todo = { task: 'Buy Milk', index: 0 };
@@ -51,18 +52,35 @@ describe('Task Component', () => {
     expect(p.text()).toBe('Edit');
   });
 
-  // it('Clicking Edit button calls handleEdit function', () => {
-  //   const todo = { task: 'Buy Milk', index: 0 };
-  //   const wrapper = mount(
-  //     <Provider store={store}>
-  //       <Task
-  //         task={todo.task}
-  //         index={todo.index}
-  //       />
-  //     </Provider>
-  //   );
-  //   const p = wrapper.find('.edit-button');
-  //   p.simulate('click');
-  // });
+  it('Clicking Edit button makes task field editable', () => {
+    const todo = { task: 'Buy Milk', index: 0 };
+    const wrapper = mount(
+      <Provider store={store}>
+        <Task
+          task={todo.task}
+          index={todo.index}
+        />
+      </Provider>
+    );
+    const p = wrapper.find('.edit-button');
+    p.simulate('click');
+    expect(wrapper.childAt(2).hasClass('task-editable')).toBe(true);
+  });
+
+  it('Clicking Save button makes task field read-only', () => {
+    const todo = { task: 'Buy Milk', index: 0 };
+    const wrapper = mount(
+      <Provider store={store}>
+        <Task
+          task={todo.task}
+          index={todo.index}
+        />
+      </Provider>
+    );
+    const p = wrapper.find('.edit-button');
+    p.simulate('click');
+    p.simulate('click');
+    expect(wrapper.childAt(2).hasClass('task-read-only')).toBe(true);
+  });
 
 });

@@ -64,7 +64,7 @@ class Task extends React.Component {
         </button>
 
         <button
-          className="edit-button"
+          className={this.state.disabled ? "edit-button" : "save-button"}
           id="small-button"
           value={this.props.index}
           onClick={this.state.disabled ? this.handleEdit : this.handleSave}
