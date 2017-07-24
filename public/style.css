@@ -145,7 +145,15 @@
 
 }
 
-.task-field {
+.task-read-only {
+  display: inline-block;
+  height: 23px;
+  width: 79%;
+  vertical-align: top;
+  font-size: 16pt;
+}
+
+.task-editable {
   display: inline-block;
   height: 23px;
   width: 79%;

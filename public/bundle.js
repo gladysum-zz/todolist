@@ -37120,10 +37120,12 @@
 	
 	    _this.state = {
 	      value: _this.props.task,
-	      disabled: true
+	      disabled: true,
+	      hasBeenEdited: false
 	    };
 	    _this.handleDelete = _this.handleDelete.bind(_this);
 	    _this.handleEdit = _this.handleEdit.bind(_this);
+	    _this.handleSave = _this.handleSave.bind(_this);
 	    _this.handleChange = _this.handleChange.bind(_this);
 	    return _this;
 	  }
@@ -37139,14 +37141,11 @@
 	    key: 'handleEdit',
 	    value: function handleEdit(event) {
 	      event.preventDefault();
-	      var index = this.props.index;
-	      var value = this.props.task;
 	      this.setState({
-	        disabled: !this.state.disabled
+	        disabled: !this.state.disabled,
+	        hasBeenEdited: true,
+	        value: this.props.task
 	      });
-	      if (!this.state.disabled) {
-	        this.props.replace(index, value);
-	      }
 	    }
 	  }, {
 	    key: 'handleChange',
@@ -37156,21 +37155,36 @@
 	      });
 	    }
 	  }, {
+	    key: 'handleSave',
+	    value: function handleSave(event) {
+	      event.preventDefault();
+	      this.setState({
+	        disabled: !this.state.disabled
+	      });
+	      var index = this.props.index;
+	      var value = this.state.value;
+	      if (value !== this.props.task) {
+	        this.props.replace(index, value);
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement('li', { key: this.props.index }, _react2.default.createElement('button', {
 	        className: 'delete-button',
 	        id: 'small-button',
 	        value: this.props.index,
-	        onClick: this.handleDelete }, 'Delete'), _react2.default.createElement('button', {
+	        onClick: this.handleDelete
+	      }, 'Delete'), _react2.default.createElement('button', {
 	        className: 'edit-button',
 	        id: 'small-button',
 	        value: this.props.index,
-	        onClick: this.handleEdit }, this.state.disabled ? 'Edit' : 'Save'), this.state.disabled ? _react2.default.createElement('div', { className: 'task-field' }, this.props.task) : _react2.default.createElement('input', {
-	        className: 'task-field',
+	        onClick: this.state.disabled ? this.handleEdit : this.handleSave
+	      }, this.state.disabled ? 'Edit' : 'Save'), this.state.disabled ? _react2.default.createElement('div', { className: 'task-read-only' }, this.props.task) : _react2.default.createElement('input', {
+	        className: 'task-editable',
 	        type: 'text',
 	        name: this.props.index,
-	        value: this.props.task,
+	        value: this.state.hasBeenEdited ? this.state.value : this.props.task,
 	        disabled: this.state.disabled,
 	        onChange: this.handleChange
 	      }));

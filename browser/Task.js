@@ -7,10 +7,12 @@ class Task extends React.Component {
     super(props);
     this.state = {
       value: this.props.task,
-      disabled: true
+      disabled: true,
+      hasBeenEdited: false,
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleSave = this.handleSave.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -22,14 +24,11 @@ class Task extends React.Component {
 
   handleEdit(event) {
     event.preventDefault();
-    let index = this.props.index;
-    let value = this.props.task;
     this.setState({
-      disabled: !this.state.disabled
-    })
-    if (!this.state.disabled) {
-      this.props.replace(index, value);
-    }
+      disabled: !this.state.disabled,
+      hasBeenEdited: true,
+      value: this.props.task
+    });
   }
 
   handleChange(event) {
@@ -38,6 +37,19 @@ class Task extends React.Component {
     });
   }
 
+  handleSave(event) {
+    event.preventDefault();
+    this.setState({
+      disabled: !this.state.disabled
+    });
+    let index = this.props.index;
+    let value = this.state.value;
+    if (value !== this.props.task) {
+      this.props.replace(index, value);
+    }
+  }
+
+  
   render() {
     return (
       <li key={this.props.index}>
@@ -46,7 +58,8 @@ class Task extends React.Component {
           className="delete-button"
           id="small-button"
           value={this.props.index}
-          onClick={this.handleDelete}>
+          onClick={this.handleDelete}
+        >
           Delete
         </button>
 
@@ -54,21 +67,22 @@ class Task extends React.Component {
           className="edit-button"
           id="small-button"
           value={this.props.index}
-          onClick={this.handleEdit}>
+          onClick={this.state.disabled ? this.handleEdit : this.handleSave}
+        >
           {this.state.disabled ? 'Edit' : 'Save'}
         </button>
 
         {this.state.disabled ?
 
-          <div className="task-field">
+          <div className="task-read-only">
             {this.props.task}
           </div> :
 
           <input
-            className="task-field"
+            className="task-editable"
             type='text'
             name={this.props.index}
-            value={this.props.task}
+            value={this.state.hasBeenEdited ? this.state.value : this.props.task}
             disabled={this.state.disabled}
             onChange={this.handleChange}
           />

@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">69.57% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/20</span>
+        <span class='fraction'>16/23</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>8/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">62.5% </span>
+        <span class="strong">55.56% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/8</span>
+        <span class='fraction'>5/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">73.68% </span>
+        <span class="strong">68.18% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>14/19</span>
+        <span class='fraction'>15/22</span>
       </div>
     </div>
   </div>
@@ -133,7 +133,21 @@
 88
 89
 90
-91</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -144,6 +158,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -156,18 +172,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -213,12 +239,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -232,10 +260,12 @@ class Task extends React.Component {
     super(props);
     this.state = {
       value: this.props.task,
-      disabled: true
+      disabled: true,
+      hasBeenEdited: false,
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleSave = this.handleSave.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 &nbsp;
@@ -247,14 +277,11 @@ class Task extends React.Component {
 &nbsp;
   handleEdit(event) {
     event.preventDefault();
-    let index = this.props.index;
-    let value = this.props.task;
     this.setState({
-      disabled: !this.state.disabled
-    })
-    if (!this.state.disabled) {
-      this.props.replace(index, value);
-    }
+      disabled: !this.state.disabled,
+      hasBeenEdited: true,
+      value: this.props.task
+    });
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ha</span>ndleChange(event) {
@@ -263,6 +290,19 @@ class Task extends React.Component {
     });
   }
 &nbsp;
+  handleSave(event) {
+    event.preventDefault();
+    this.setState({
+      disabled: !this.state.disabled
+    });
+    let index = this.props.index;
+    let value = this.state.value;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (value !== this.props.task) {
+<span class="cstat-no" title="statement not covered" >      this.props.replace(index, value);</span>
+    }
+  }
+&nbsp;
+  
   render() {
     return (
       &lt;li key={this.props.index}&gt;
@@ -271,7 +311,8 @@ class Task extends React.Component {
           className="delete-button"
           id="small-button"
           value={this.props.index}
-          onClick={this.handleDelete}&gt;
+          onClick={this.handleDelete}
+        &gt;
           Delete
         &lt;/button&gt;
 &nbsp;
@@ -279,21 +320,22 @@ class Task extends React.Component {
           className="edit-button"
           id="small-button"
           value={this.props.index}
-          onClick={this.handleEdit}&gt;
+          onClick={this.state.disabled ? this.handleEdit : this.handleSave}
+        &gt;
           {this.state.disabled ? 'Edit' : 'Save'}
         &lt;/button&gt;
 &nbsp;
         {this.state.disabled ?
 &nbsp;
-          &lt;div className="task-field"&gt;
+          &lt;div className="task-read-only"&gt;
             {this.props.task}
           &lt;/div&gt; :
 &nbsp;
           &lt;input
-            className="task-field"
+            className="task-editable"
             type='text'
             name={this.props.index}
-            value={this.props.task}
+            value={this.state.hasBeenEdited ? this.state.value : <span class="branch-1 cbranch-no" title="branch not covered" >this.props.task}</span>
             disabled={this.state.disabled}
             onChange={this.handleChange}
           /&gt;
@@ -307,8 +349,8 @@ const mapDispatchToProps = dispatch =&gt; ({
   drop: <span class="fstat-no" title="function not covered" >in</span>dex =&gt; {
 <span class="cstat-no" title="statement not covered" >    dispatch(drop(index))</span>
   },
-  replace: (index, value) =&gt; {
-    dispatch(replace(index, value))
+  replace: <span class="fstat-no" title="function not covered" >(i</span>ndex, value) =&gt; {
+<span class="cstat-no" title="statement not covered" >    dispatch(replace(index, value))</span>
   }
 })
 &nbsp;
@@ -319,7 +361,7 @@ export default connect(null, mapDispatchToProps)(Task)
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jul 24 2017 11:36:16 GMT-0400 (EDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jul 24 2017 13:24:14 GMT-0400 (EDT)
 </div>
 </div>
 <script src="prettify.js"></script>
