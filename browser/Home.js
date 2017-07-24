@@ -13,7 +13,6 @@ class Home extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   handleChange(event) {
@@ -46,8 +45,6 @@ class Home extends React.Component {
        .catch(error=>{console.log(error)});
       }
     }
-
-
 
   render() {
     return (
