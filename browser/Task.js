@@ -78,10 +78,6 @@ class Task extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  tasks: state.tasks
-})
-
 const mapDispatchToProps = dispatch => ({
   drop: index => {
     dispatch(drop(index))
@@ -91,4 +87,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Task)
+export default connect(null, mapDispatchToProps)(Task)
