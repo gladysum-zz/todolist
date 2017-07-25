@@ -111,6 +111,23 @@ describe('Task Component', () => {
     expect(inputField.props().value).toBe(todo.task);
   });
 
+  it('User can edit a task after hitting the Edit button', () => {
+    const todo = { task: 'Buy Milk', index: 0 };
+    const wrapper = mount(
+      <Provider store={store}>
+        <Task
+          task={todo.task}
+          index={todo.index}
+        />
+      </Provider>
+    );
+    const editButton = wrapper.find('.edit-button');
+    editButton.simulate('click');
+    const inputField = wrapper.find('.task-editable')
+    inputField.simulate('change', {target: {value: 'Wash Dishes'}});
+    expect(wrapper.find('.task-editable').text()).toBe('Wash Dishes');
+  });
+
   it('Clicking Save button makes task field read-only', () => {
     const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(

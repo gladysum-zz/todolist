@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1501018106711" clover="3.2.0">
-  <project timestamp="1501018106711" name="All files">
-    <metrics statements="81" coveredstatements="54" conditionals="33" coveredconditionals="22" methods="33" coveredmethods="22" elements="147" coveredelements="98" complexity="0" loc="81" ncloc="81" packages="1" files="9" classes="9">
+<coverage generated="1501020043806" clover="3.2.0">
+  <project timestamp="1501020043806" name="All files">
+    <metrics statements="81" coveredstatements="55" conditionals="33" coveredconditionals="22" methods="33" coveredmethods="23" elements="147" coveredelements="100" complexity="0" loc="81" ncloc="81" packages="1" files="9" classes="9">
       <file name="About.js" path="/Users/gladysum/Desktop/todolist/browser/About.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
@@ -51,27 +51,27 @@
         <line num="5" count="1" type="stmt"/>
       </file>
       <file name="Task.js" path="/Users/gladysum/Desktop/todolist/browser/Task.js">
-        <metrics statements="22" coveredstatements="15" conditionals="12" coveredconditionals="10" methods="9" coveredmethods="5"/>
-        <line num="7" count="8" type="stmt"/>
-        <line num="8" count="8" type="stmt"/>
-        <line num="13" count="8" type="stmt"/>
-        <line num="14" count="8" type="stmt"/>
-        <line num="15" count="8" type="stmt"/>
-        <line num="16" count="8" type="stmt"/>
+        <metrics statements="22" coveredstatements="16" conditionals="12" coveredconditionals="10" methods="9" coveredmethods="6"/>
+        <line num="7" count="9" type="stmt"/>
+        <line num="8" count="9" type="stmt"/>
+        <line num="13" count="9" type="stmt"/>
+        <line num="14" count="9" type="stmt"/>
+        <line num="15" count="9" type="stmt"/>
+        <line num="16" count="9" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
-        <line num="26" count="5" type="stmt"/>
-        <line num="27" count="5" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
         <line num="41" count="2" type="stmt"/>
         <line num="42" count="2" type="stmt"/>
         <line num="45" count="2" type="stmt"/>
         <line num="46" count="2" type="stmt"/>
         <line num="47" count="2" type="cond" truecount="1" falsecount="1"/>
         <line num="48" count="0" type="stmt"/>
-        <line num="54" count="15" type="stmt"/>
-        <line num="94" count="8" type="stmt"/>
+        <line num="54" count="18" type="stmt"/>
+        <line num="94" count="9" type="stmt"/>
         <line num="96" count="0" type="stmt"/>
         <line num="99" count="0" type="stmt"/>
       </file>
