@@ -1,5 +1,5 @@
 TN:
-SF:/Users/gladysum/Desktop/todolist/browser/About.js
+SF:/Users/Gladys/todolist/browser/About.js
 FN:3,(anonymous_0)
 FNF:1
 FNH:1
@@ -12,7 +12,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/gladysum/Desktop/todolist/browser/App.js
+SF:/Users/Gladys/todolist/browser/App.js
 FN:5,_interopRequireDefault
 FN:17,App
 FN:23,(anonymous_2)
@@ -40,7 +40,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/gladysum/Desktop/todolist/browser/Home.js
+SF:/Users/Gladys/todolist/browser/Home.js
 FN:8,(anonymous_0)
 FN:18,(anonymous_1)
 FN:25,(anonymous_2)
@@ -85,7 +85,7 @@ BRF:4
 BRH:1
 end_of_record
 TN:
-SF:/Users/gladysum/Desktop/todolist/browser/List.js
+SF:/Users/Gladys/todolist/browser/List.js
 FN:6,(anonymous_0)
 FN:10,(anonymous_1)
 FN:13,(anonymous_2)
@@ -108,7 +108,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:/Users/gladysum/Desktop/todolist/browser/Nav.js
+SF:/Users/Gladys/todolist/browser/Nav.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -121,7 +121,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/gladysum/Desktop/todolist/browser/Task.js
+SF:/Users/Gladys/todolist/browser/Task.js
 FN:6,(anonymous_0)
 FN:19,(anonymous_1)
 FN:25,(anonymous_2)
@@ -182,7 +182,7 @@ BRF:12
 BRH:10
 end_of_record
 TN:
-SF:/Users/gladysum/Desktop/todolist/browser/index.js
+SF:/Users/Gladys/todolist/browser/index.js
 FN:7,_interopRequireDefault
 FNF:1
 FNH:0
@@ -205,7 +205,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/gladysum/Desktop/todolist/browser/reducer.js
+SF:/Users/Gladys/todolist/browser/reducer.js
 FN:7,(anonymous_0)
 FN:16,(anonymous_1)
 FN:23,(anonymous_2)
@@ -250,7 +250,7 @@ BRF:7
 BRH:7
 end_of_record
 TN:
-SF:/Users/gladysum/Desktop/todolist/browser/store.js
+SF:/Users/Gladys/todolist/browser/store.js
 FNF:0
 FNH:0
 DA:6,3
