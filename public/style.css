@@ -165,25 +165,7 @@
   font-size: 16pt;
 }
 
-.submit-button-container {
-  margin-top: -13%;
-  margin-right: 5%;
-  text-align: right;
-}
-.submit-button {
-  background-color: #f46b22 !important;
-  border-radius: 8px !important;
-  color: white !important;
-  text-align: center;
-  z-index: 2;
-}
-
-.submit-button:hover {
-  background-color: #dc5406 !important;
-}
-
-
-#button-container {
+.button-container {
   text-align: center;
   padding-top: 7px;
 }

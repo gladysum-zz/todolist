@@ -33904,16 +33904,15 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('div', { className: 'background' }, _react2.default.createElement('div', { className: 'organize-container' }, _react2.default.createElement('h1', null, 'Add a task'), _react2.default.createElement('form', { onSubmit: this.handleSubmit }, _react2.default.createElement('textarea', {
+	      return _react2.default.createElement('div', { className: 'background' }, _react2.default.createElement('div', { className: 'organize-container' }, _react2.default.createElement('h1', null, 'Add a task'), _react2.default.createElement('textarea', {
 	        className: 'input-field',
 	        type: 'text',
 	        value: this.state.value,
 	        onChange: this.handleChange
-	      }), _react2.default.createElement('div', { className: 'input-error' }, this.state.error ? this.state.error : null), _react2.default.createElement('div', { id: 'button-container' }, _react2.default.createElement('input', {
-	        type: 'submit',
-	        value: 'Submit',
-	        id: 'button'
-	      }))), _react2.default.createElement('h1', null, 'My Tasks'), _react2.default.createElement(_List2.default, null)));
+	      }), _react2.default.createElement('div', { className: 'input-error' }, this.state.error ? this.state.error : null), _react2.default.createElement('div', { className: 'button-container' }, _react2.default.createElement('button', {
+	        id: 'button',
+	        onClick: this.handleSubmit
+	      }, 'Submit')), _react2.default.createElement('h1', null, 'My Tasks'), _react2.default.createElement(_List2.default, null)));
 	    }
 	  }]);
 	

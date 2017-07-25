@@ -6,7 +6,7 @@ import store from './store';
 
 describe('Task Component', () => {
 
-  it('renders the expected task', () => {
+  it('renders the expected task inside the 3rd child of the Task Component', () => {
     const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(
       <Provider store={store}>
@@ -19,7 +19,7 @@ describe('Task Component', () => {
     expect(wrapper.childAt(2).text()).toBe(todo.task);
   });
 
-  it('renders a Delete button by default for the given task', () => {
+  it('renders a Delete button for the given task', () => {
     const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(
       <Provider store={store}>
@@ -32,7 +32,7 @@ describe('Task Component', () => {
     expect(wrapper.find('.delete-button').type()).toBe('button');
   });
 
-  it('renders an Edit button by default for the given task', () => {
+  it('renders an Edit button for the given task', () => {
     const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(
       <Provider store={store}>
@@ -42,7 +42,7 @@ describe('Task Component', () => {
         />
       </Provider>
     );
-    expect(wrapper.childAt(1).text()).toBe('Edit');
+    expect(wrapper.find('.edit-button').type()).toBe('button');
   });
 
   it('Edit button becomes Save button when clicked', () => {
@@ -72,8 +72,9 @@ describe('Task Component', () => {
     );
     const p = wrapper.find('.edit-button');
     p.simulate('click');
-    p.simulate('click');
-    expect(p.text()).toBe('Edit');
+    const q = wrapper.find('.save-button')
+    q.simulate('click');
+    expect(q.text()).toBe('Edit');
   });
 
   it('Clicking Edit button makes task field editable', () => {
@@ -119,7 +120,8 @@ describe('Task Component', () => {
     );
     const p = wrapper.find('.edit-button');
     p.simulate('click');
-    p.simulate('click');
+    const q = wrapper.find('.save-button');
+    q.simulate('click');
     expect(wrapper.childAt(2).hasClass('task-read-only')).toBe(true);
   });
 
