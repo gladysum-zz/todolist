@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1501013606480" clover="3.2.0">
-  <project timestamp="1501013606480" name="All files">
+<coverage generated="1501018106711" clover="3.2.0">
+  <project timestamp="1501018106711" name="All files">
     <metrics statements="81" coveredstatements="54" conditionals="33" coveredconditionals="22" methods="33" coveredmethods="22" elements="147" coveredelements="98" complexity="0" loc="81" ncloc="81" packages="1" files="9" classes="9">
       <file name="About.js" path="/Users/gladysum/Desktop/todolist/browser/About.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="5" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
       </file>
       <file name="App.js" path="/Users/gladysum/Desktop/todolist/browser/App.js">
         <metrics statements="9" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -21,10 +21,10 @@
       </file>
       <file name="Home.js" path="/Users/gladysum/Desktop/todolist/browser/Home.js">
         <metrics statements="16" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="6"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
         <line num="19" count="3" type="stmt"/>
         <line num="26" count="3" type="stmt"/>
         <line num="27" count="3" type="cond" truecount="2" falsecount="0"/>
@@ -34,21 +34,21 @@
         <line num="41" count="2" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
         <line num="45" count="2" type="stmt"/>
-        <line num="50" count="10" type="stmt"/>
-        <line num="86" count="4" type="stmt"/>
+        <line num="50" count="7" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
         <line num="88" count="0" type="stmt"/>
       </file>
       <file name="List.js" path="/Users/gladysum/Desktop/todolist/browser/List.js">
         <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
-        <line num="7" count="5" type="stmt"/>
-        <line num="11" count="5" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="24" count="5" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
       </file>
       <file name="Nav.js" path="/Users/gladysum/Desktop/todolist/browser/Nav.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="6" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
       </file>
       <file name="Task.js" path="/Users/gladysum/Desktop/todolist/browser/Task.js">
         <metrics statements="22" coveredstatements="15" conditionals="12" coveredconditionals="10" methods="9" coveredmethods="5"/>

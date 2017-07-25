@@ -6,7 +6,7 @@ import store from './store';
 
 describe('Task Component', () => {
 
-  it('renders the expected task inside the 3rd child of the Task Component', () => {
+  it('renders the expected task inside the 3rd child of the Task Component', () => {  
     const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(
       <Provider store={store}>
@@ -16,6 +16,7 @@ describe('Task Component', () => {
         />
       </Provider>
     );
+    const editButton = wrapper.find('.edit-button');
     expect(wrapper.childAt(2).text()).toBe(todo.task);
   });
 
@@ -29,6 +30,7 @@ describe('Task Component', () => {
         />
       </Provider>
     );
+    const editButton = wrapper.find('.edit-button');
     expect(wrapper.find('.delete-button').type()).toBe('button');
   });
 
@@ -42,6 +44,7 @@ describe('Task Component', () => {
         />
       </Provider>
     );
+    const editButton = wrapper.find('.edit-button');
     expect(wrapper.find('.edit-button').type()).toBe('button');
   });
 
@@ -55,9 +58,9 @@ describe('Task Component', () => {
         />
       </Provider>
     );
-    const p = wrapper.find('.edit-button');
-    p.simulate('click');
-    expect(p.text()).toBe('Save');
+    const editButton = wrapper.find('.edit-button');
+    editButton.simulate('click');
+    expect(editButton.text()).toBe('Save');
   });
 
   it('Save button becomes Edit button when clicked', () => {
@@ -70,11 +73,11 @@ describe('Task Component', () => {
         />
       </Provider>
     );
-    const p = wrapper.find('.edit-button');
-    p.simulate('click');
-    const q = wrapper.find('.save-button')
-    q.simulate('click');
-    expect(q.text()).toBe('Edit');
+    const editButton = wrapper.find('.edit-button');
+    editButton.simulate('click');
+    const saveButton = wrapper.find('.save-button')
+    saveButton.simulate('click');
+    expect(saveButton.text()).toBe('Edit');
   });
 
   it('Clicking Edit button makes task field editable', () => {
@@ -87,8 +90,8 @@ describe('Task Component', () => {
         />
       </Provider>
     );
-    const p = wrapper.find('.edit-button');
-    p.simulate('click');
+    const editButton = wrapper.find('.edit-button');
+    editButton.simulate('click');
     expect(wrapper.find('.task-editable').type()).toBe('textarea');
   });
 
@@ -102,10 +105,10 @@ describe('Task Component', () => {
         />
       </Provider>
     );
-    const p = wrapper.find('.edit-button');
-    p.simulate('click');
-    const q = wrapper.find('.task-editable')
-    expect(q.props().value).toBe(todo.task);
+    const editButton = wrapper.find('.edit-button');
+    editButton.simulate('click');
+    const inputField = wrapper.find('.task-editable')
+    expect(inputField.props().value).toBe(todo.task);
   });
 
   it('Clicking Save button makes task field read-only', () => {
@@ -118,10 +121,10 @@ describe('Task Component', () => {
         />
       </Provider>
     );
-    const p = wrapper.find('.edit-button');
-    p.simulate('click');
-    const q = wrapper.find('.save-button');
-    q.simulate('click');
+    const editButton = wrapper.find('.edit-button');
+    editButton.simulate('click');
+    const saveButton = wrapper.find('.save-button');
+    saveButton.simulate('click');
     expect(wrapper.childAt(2).hasClass('task-read-only')).toBe(true);
   });
 
