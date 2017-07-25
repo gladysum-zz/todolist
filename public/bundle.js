@@ -25896,7 +25896,8 @@
 	      calendarTextColor: palette.textColor,
 	      selectColor: palette.primary2Color,
 	      selectTextColor: palette.alternateTextColor,
-	      calendarYearBackgroundColor: palette.canvasColor
+	      calendarYearBackgroundColor: palette.canvasColor,
+	      headerColor: palette.pickerHeaderColor || palette.primary1Color
 	    },
 	    dialog: {
 	      titleFontSize: 22,
@@ -26119,7 +26120,8 @@
 	    }
 	  }, muiTheme, {
 	    baseTheme: baseTheme, // To provide backward compatibility.
-	    rawTheme: baseTheme });
+	    rawTheme: baseTheme // To provide backward compatibility.
+	  });
 	
 	  var transformers = [_autoprefixer2.default, _rtl2.default, _callOnce2.default].map(function (t) {
 	    return t(muiTheme);
@@ -29826,7 +29828,7 @@
 	      , linux = !android && !sailfish && !tizen && !webos && /linux/i.test(ua)
 	      , edgeVersion = getFirstMatch(/edge\/(\d+(\.\d+)?)/i)
 	      , versionIdentifier = getFirstMatch(/version\/(\d+(\.\d+)?)/i)
-	      , tablet = /tablet/i.test(ua)
+	      , tablet = /tablet/i.test(ua) && !/tablet pc/i.test(ua)
 	      , mobile = !tablet && /[^-]mobi/i.test(ua)
 	      , xbox = /xbox/i.test(ua)
 	      , result
@@ -33062,19 +33064,12 @@
 
 /***/ }),
 /* 379 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	exports['default'] = bindActionCreators;
-	
-	var _warning = __webpack_require__(378);
-	
-	var _warning2 = _interopRequireDefault(_warning);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
 	function bindActionCreator(actionCreator, dispatch) {
 	  return function () {
 	    return dispatch(actionCreator.apply(undefined, arguments));
@@ -33118,8 +33113,6 @@
 	    var actionCreator = actionCreators[key];
 	    if (typeof actionCreator === 'function') {
 	      boundActionCreators[key] = bindActionCreator(actionCreator, dispatch);
-	    } else {
-	      (0, _warning2['default'])('bindActionCreators expected a function actionCreator for key \'' + key + '\', instead received type \'' + typeof actionCreator + '\'.');
 	    }
 	  }
 	  return boundActionCreators;
@@ -36505,7 +36498,7 @@
 					"spec": ">=0.16.1 <0.17.0",
 					"type": "range"
 				},
-				"/Users/Gladys/fooddriveatron"
+				"/Users/inrhythm_52/todolist"
 			]
 		],
 		"_from": "axios@>=0.16.1 <0.17.0",
@@ -36539,7 +36532,7 @@
 		"_shasum": "ba4f92f17167dfbab40983785454b9ac149c3c6d",
 		"_shrinkwrap": null,
 		"_spec": "axios@^0.16.1",
-		"_where": "/Users/Gladys/fooddriveatron",
+		"_where": "/Users/inrhythm_52/todolist",
 		"author": {
 			"name": "Matt Zabriskie"
 		},
@@ -37187,12 +37180,11 @@
 	        id: 'small-button',
 	        value: this.props.index,
 	        onClick: this.state.disabled ? this.handleEdit : this.handleSave
-	      }, this.state.disabled ? 'Edit' : 'Save'), this.state.disabled ? _react2.default.createElement('div', { className: 'task-read-only' }, this.props.task) : _react2.default.createElement('input', {
+	      }, this.state.disabled ? 'Edit' : 'Save'), this.state.disabled ? _react2.default.createElement('div', { className: 'task-read-only' }, this.props.task) : _react2.default.createElement('textarea', {
 	        className: 'task-editable',
 	        type: 'text',
 	        name: this.props.index,
 	        value: this.state.hasBeenEdited ? this.state.value : this.props.task,
-	        disabled: this.state.disabled,
 	        onChange: this.handleChange
 	      }));
 	    }

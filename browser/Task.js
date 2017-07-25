@@ -78,12 +78,11 @@ class Task extends React.Component {
             {this.props.task}
           </div> :
 
-          <input
+          <textarea
             className="task-editable"
             type='text'
             name={this.props.index}
             value={this.state.hasBeenEdited ? this.state.value : this.props.task}
-            disabled={this.state.disabled}
             onChange={this.handleChange}
           />
         }
