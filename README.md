@@ -9,7 +9,7 @@
 4. Command line: npm start
 5. Browser: http://localhost:3000
 
-### To demo the app:
+### To run test specs:
 
 6. Command line: npm test
 

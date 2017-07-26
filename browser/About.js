@@ -6,6 +6,6 @@ const About = () => (
       <h1>This is the About Page.</h1>
     </div>
   </div>
-)
+);
 
 export default About;

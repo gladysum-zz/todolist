@@ -19,10 +19,10 @@ class List extends React.Component {
       </ol>
     )
   }
-}
+};
 
 const mapStateToProps = state => ({
   tasks: state.tasks
-})
+});
 
-export default connect(mapStateToProps)(List)
+export default connect(mapStateToProps)(List);

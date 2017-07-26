@@ -25,6 +25,7 @@ router.delete('/tasks/:id', (req, res, next) => {
 	.catch(next);
 });
 
+// Update a task
 router.put('/tasks/:id', (req, res, next) => {
 	Task.update(req.body, {
 		where: {
@@ -33,7 +34,7 @@ router.put('/tasks/:id', (req, res, next) => {
 	})
 	.then(task => res.json(task))
 	.catch(next);
-})
+});
 
 
 

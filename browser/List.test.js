@@ -1,7 +1,7 @@
 import List from './List';
 import React from 'react';
 import { mount } from 'enzyme';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import store from './store';
 
 describe('List Component', () => {
@@ -15,4 +15,4 @@ describe('List Component', () => {
   	expect(wrapper.text()).toBe('No tasks added.');
   });
 
-})
+});

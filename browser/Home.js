@@ -84,12 +84,12 @@ class Home extends React.Component {
       </div>
     )
   }
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   add: input => {
     dispatch(add(input))
   }
-})
+});
 
-export default connect(null, mapDispatchToProps)(Home)
+export default connect(null, mapDispatchToProps)(Home);

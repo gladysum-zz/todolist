@@ -1,7 +1,7 @@
 import Home from './Home';
 import React from 'react';
 import { mount } from 'enzyme';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import store from './store';
 
 describe('Home Component', () => {

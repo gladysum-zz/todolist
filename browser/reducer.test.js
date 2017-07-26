@@ -3,51 +3,49 @@ import {ADD, DROP, REPLACE, add, drop, replace} from './reducer';
 
 describe('reducer', () => {
 
-    const task = {
-      id: 3,
-      content: 'Buy groceries'
-    };
+  const task = {
+    id: 3,
+    content: 'Buy groceries'
+  };
 
-    const task0 = {
-      id: 0,
-      content: 'Refactor broken tests'
-    };
+  const task0 = {
+    id: 0,
+    content: 'Refactor broken tests'
+  };
 
-    const task1 = {
-      id: 1,
-      content: 'Write backend tests'
-    };
+  const task1 = {
+    id: 1,
+    content: 'Write backend tests'
+  };
 
-    const task2 = {
-      id: 2,
-      content: 'Create a user model'
-    };
+  const task2 = {
+    id: 2,
+    content: 'Create a user model'
+  };
 
-
-
-    it('has a default state', () => {
-        expect(reducer(undefined, {type: undefined})).toEqual({
-          tasks:[]
-        });
+  it('has a default state', () => {
+    expect(reducer(undefined, {type: undefined})).toEqual({
+      tasks:[]
     });
+  });
 
-    it('can handle ADD', () => {
-      expect(reducer(undefined, {type: ADD, payload: task})).toEqual({
-        tasks: [task]
-      })
-    });
+  it('can handle ADD', () => {
+    expect(reducer(undefined, {type: ADD, payload: task})).toEqual({
+      tasks: [task]
+    })
+  });
 
-    it('can handle DROP', () => {
-      expect(reducer({tasks:[task0, task1, task2]}, {type: DROP, payload: 1})).toEqual({
-        tasks: [task0, task2]
-      })
-    });
+  it('can handle DROP', () => {
+    expect(reducer({tasks:[task0, task1, task2]}, {type: DROP, payload: 1})).toEqual({
+      tasks: [task0, task2]
+    })
+  });
 
-    it('can handle REPLACE', () => {
-      expect(reducer({tasks:[task0, task1, task2]}, {type: REPLACE, payload: {id: 0, content: 'Refactor frontend tests'}})).toEqual({
-        tasks: [{id: 0, content: 'Refactor frontend tests'}, task1, task2]
-      })
-    });
+  it('can handle REPLACE', () => {
+    expect(reducer({tasks:[task0, task1, task2]}, {type: REPLACE, payload: {id: 0, content: 'Refactor frontend tests'}})).toEqual({
+      tasks: [{id: 0, content: 'Refactor frontend tests'}, task1, task2]
+    })
+  });
 
 });
 

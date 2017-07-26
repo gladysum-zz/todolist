@@ -32,4 +32,4 @@ describe('Nav component', () => {
 		expect(navMenu.childAt(1).childAt(0).text()).toEqual('ABOUT');
 	});
 
-})
+});

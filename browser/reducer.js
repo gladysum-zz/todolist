@@ -1,6 +1,6 @@
 const initialState = {
   tasks:[]
-}
+};
 
 /* ------------ REDUCER ------------------ */
 
@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 /* ----------------- ACTIONS ------------------ */
 

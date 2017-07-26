@@ -32,7 +32,7 @@ class Task extends React.Component {
   handleEdit(event) {
     event.preventDefault();
     this.setState({
-      disabled: !this.state.disabled,
+      disabled: false,
       hasBeenEdited: true,
       value: this.props.task.content
     });
@@ -73,10 +73,8 @@ class Task extends React.Component {
         });
       })
       .catch(error=>{console.log(error)});
-    }
-    
+    } 
   }
-
   
   render() {
     return (
@@ -122,7 +120,7 @@ class Task extends React.Component {
       </li>
     )
   }
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   drop: id => {
@@ -131,6 +129,6 @@ const mapDispatchToProps = dispatch => ({
   replace: (id, content) => {
     dispatch(replace(id, content))
   }
-})
+});
 
-export default connect(null, mapDispatchToProps)(Task)
+export default connect(null, mapDispatchToProps)(Task);
