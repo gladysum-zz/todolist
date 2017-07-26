@@ -13,3 +13,9 @@
 
 6. Command line: npm test
 
+Notes on test specs:
+All tests are in the 'browser' directory. 
+The naming convention I'm using is as follows:
+Component.js - the React component
+Component.test.js - unit tests for Component.js 
+
