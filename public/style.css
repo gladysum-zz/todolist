@@ -68,7 +68,6 @@
   border-radius: 2px;
   position: relative;
   z-index: 2;
-
 }
 
 .dropdown-content {
@@ -147,8 +146,8 @@
   height: 25px;
   vertical-align: top;
   width: 7%;
-
 }
+
 .task-read-only {
   display: inline-block;
   height: 100%;
@@ -184,7 +183,6 @@
   border-radius: 10px;
 }
 
-
 #button:hover {
   background-color: #dc5406;
 }
@@ -202,24 +200,23 @@
   text-align: center;
 }
 
-
 #small-button:hover {
   background-color: #00F5F5;
 }
 
 a:link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:active {
-    text-decoration: none;
+  text-decoration: none;
 }
 

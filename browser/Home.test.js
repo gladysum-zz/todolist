@@ -1,6 +1,6 @@
 import Home from './Home';
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { Provider } from 'react-redux'
 import store from './store';
 
@@ -11,6 +11,7 @@ describe('Home Component', () => {
       <Home />
     </Provider>
   );
+
   const submitButton = wrapper.find('#button');
   const inputField = wrapper.find('.input-field');
 
@@ -34,6 +35,14 @@ describe('Home Component', () => {
     inputField.simulate('change', {target: {value: 'Wash Dishes'}});
     submitButton.simulate('click');
     expect(wrapper.find('.input-error').text()).toBe('');
+  });
+
+  it('Has h1 header with "Add a task" ', () => {
+    expect(wrapper.find('h1').at(0).text()).toBe('Add a task');
+  });
+
+  it('Has h1 header with "My Tasks" ', () => {
+    expect(wrapper.find('h1').at(1).text()).toBe('My Tasks');
   });
 
 });

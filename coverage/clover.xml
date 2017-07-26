@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1501020043806" clover="3.2.0">
-  <project timestamp="1501020043806" name="All files">
+<coverage generated="1501076665867" clover="3.2.0">
+  <project timestamp="1501076665867" name="All files">
     <metrics statements="81" coveredstatements="55" conditionals="33" coveredconditionals="22" methods="33" coveredmethods="23" elements="147" coveredelements="100" complexity="0" loc="81" ncloc="81" packages="1" files="9" classes="9">
       <file name="About.js" path="/Users/gladysum/Desktop/todolist/browser/About.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
