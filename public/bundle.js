@@ -33657,17 +33657,17 @@
 	
 	    case DROP:
 	      return Object.assign({}, state, {
-	        tasks: state.tasks.filter(function (task, index) {
-	          return index !== action.payload;
+	        tasks: state.tasks.filter(function (task) {
+	          return task.id !== action.payload;
 	        })
 	      });
 	
 	    case REPLACE:
-	      var newIndex = action.payload.index;
-	      var newValue = action.payload.value;
+	      var newId = action.payload.id;
+	      var newTask = action.payload;
 	      return Object.assign({}, state, {
-	        tasks: state.tasks.map(function (task, index) {
-	          return index === newIndex ? newValue : task;
+	        tasks: state.tasks.map(function (task) {
+	          return task.id === newId ? newTask : task;
 	        })
 	      });
 	
@@ -33684,26 +33684,26 @@
 	
 	/* ------------ ACTION CREATORS ------------------ */
 	
-	var add = exports.add = function add(input) {
+	var add = exports.add = function add(newTask) {
 	  return {
 	    type: ADD,
-	    payload: input
+	    payload: newTask
 	  };
 	};
 	
-	var drop = exports.drop = function drop(index) {
+	var drop = exports.drop = function drop(id) {
 	  return {
 	    type: DROP,
-	    payload: Number(index)
+	    payload: Number(id)
 	  };
 	};
 	
-	var replace = exports.replace = function replace(index, value) {
+	var replace = exports.replace = function replace(id, content) {
 	  return {
 	    type: REPLACE,
 	    payload: {
-	      index: Number(index),
-	      value: value
+	      id: Number(id),
+	      content: content
 	    }
 	  };
 	};
@@ -33887,15 +33887,18 @@
 	        });
 	      } else {
 	        var input = this.state.value;
-	
-	        // Clear the user input field upon submit
-	        this.setState({
-	          value: ''
-	        });
-	
-	        // Send input to database; add the new task to the redux store
+	        // Write new task to database
 	        _axios2.default.post('/tasks', { input: input }).then(function (res) {
-	          _this2.props.add(res.data.name);
+	          var newTask = {
+	            id: res.data.id,
+	            content: res.data.content
+	          };
+	          // Update redux store with new task
+	          _this2.props.add(newTask);
+	          // Clear the input field
+	          _this2.setState({
+	            value: ''
+	          });
 	        }).catch(function (error) {
 	          console.log(error);
 	        });
@@ -37040,7 +37043,7 @@
 	      return _react2.default.createElement('ol', null, this.props.tasks.length ? this.props.tasks.map(function (task, index) {
 	        return _react2.default.createElement(_Task2.default, {
 	          task: task,
-	          index: index
+	          key: task.id
 	        });
 	      }) : "No tasks added.");
 	    }
@@ -37087,6 +37090,10 @@
 	
 	var _reducer = __webpack_require__(391);
 	
+	var _axios = __webpack_require__(395);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
@@ -37118,9 +37125,10 @@
 	    var _this = _possibleConstructorReturn(this, (Task.__proto__ || Object.getPrototypeOf(Task)).call(this, props));
 	
 	    _this.state = {
-	      value: _this.props.task,
+	      value: _this.props.task.content,
 	      disabled: true,
-	      hasBeenEdited: false
+	      hasBeenEdited: false,
+	      error: ''
 	    };
 	    _this.handleDelete = _this.handleDelete.bind(_this);
 	    _this.handleEdit = _this.handleEdit.bind(_this);
@@ -37132,9 +37140,16 @@
 	  _createClass(Task, [{
 	    key: 'handleDelete',
 	    value: function handleDelete(event) {
+	      var _this2 = this;
+	
 	      event.preventDefault();
-	      var index = this.props.index;
-	      this.props.drop(index);
+	      var id = this.props.task.id;
+	      // Send delete request to database; delete the task from the redux store
+	      _axios2.default.delete('/tasks/' + id).then(function (res) {
+	        _this2.props.drop(id);
+	      }).catch(function (error) {
+	        console.log(error);
+	      });
 	    }
 	  }, {
 	    key: 'handleEdit',
@@ -37143,7 +37158,7 @@
 	      this.setState({
 	        disabled: !this.state.disabled,
 	        hasBeenEdited: true,
-	        value: this.props.task
+	        value: this.props.task.content
 	      });
 	    }
 	  }, {
@@ -37156,36 +37171,58 @@
 	  }, {
 	    key: 'handleSave',
 	    value: function handleSave(event) {
+	      var _this3 = this;
+	
 	      event.preventDefault();
-	      this.setState({
-	        disabled: !this.state.disabled
-	      });
-	      var index = this.props.index;
-	      var value = this.state.value;
-	      if (value !== this.props.task) {
-	        this.props.replace(index, value);
+	      var id = this.props.task.id;
+	      var newContent = this.state.value;
+	      // Show validation error if user attempts to save an empty task
+	      if (newContent === '') {
+	        this.setState({
+	          error: "Cannot save an empty task."
+	        });
 	      }
+	      // If new content is same as prior content, simply make task field read-only upon Save
+	      else if (newContent === this.props.task.content) {
+	          this.setState({
+	            disabled: true,
+	            error: ''
+	          });
+	        }
+	        // If new content is non-empty and different from prior content, update task in database and redux store 
+	        else {
+	            _axios2.default.put('/tasks/' + id, { content: newContent }).then(function (res) {
+	              // Update task in redux store
+	              _this3.props.replace(id, newContent);
+	              _this3.setState({
+	                disabled: true,
+	                error: ''
+	              });
+	            }).catch(function (error) {
+	              console.log(error);
+	            });
+	          }
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('li', { key: this.props.index }, _react2.default.createElement('button', {
+	      return _react2.default.createElement('li', { key: this.props.key }, _react2.default.createElement('button', {
 	        className: 'delete-button',
 	        id: 'small-button',
-	        value: this.props.index,
+	        value: this.props.key,
 	        onClick: this.handleDelete
 	      }, 'Delete'), _react2.default.createElement('button', {
 	        className: this.state.disabled ? "edit-button" : "save-button",
 	        id: 'small-button',
-	        value: this.props.index,
+	        value: this.props.key,
 	        onClick: this.state.disabled ? this.handleEdit : this.handleSave
-	      }, this.state.disabled ? 'Edit' : 'Save'), this.state.disabled ? _react2.default.createElement('div', { className: 'task-read-only' }, this.props.task) : _react2.default.createElement('textarea', {
+	      }, this.state.disabled ? 'Edit' : 'Save'), this.state.disabled ? _react2.default.createElement('div', { className: 'task-read-only' }, this.props.task.content) : _react2.default.createElement('textarea', {
 	        className: 'task-editable',
 	        type: 'text',
-	        name: this.props.index,
-	        value: this.state.hasBeenEdited ? this.state.value : this.props.task,
+	        name: this.props.key,
+	        value: this.state.hasBeenEdited ? this.state.value : this.props.task.content,
 	        onChange: this.handleChange
-	      }));
+	      }), _react2.default.createElement('div', { className: 'input-error' }, this.state.error ? this.state.error : null));
 	    }
 	  }]);
 	
@@ -37194,11 +37231,11 @@
 	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
-	    drop: function drop(index) {
-	      dispatch((0, _reducer.drop)(index));
+	    drop: function drop(id) {
+	      dispatch((0, _reducer.drop)(id));
 	    },
-	    replace: function replace(index, value) {
-	      dispatch((0, _reducer.replace)(index, value));
+	    replace: function replace(id, content) {
+	      dispatch((0, _reducer.replace)(id, content));
 	    }
 	  };
 	};
@@ -37224,7 +37261,7 @@
 	}
 	
 	var About = function About() {
-	  return _react2.default.createElement("div", { className: "background" }, _react2.default.createElement("div", { className: "organize-container" }, "This is the About Page."));
+	  return _react2.default.createElement("div", { className: "background" }, _react2.default.createElement("div", { className: "organize-container" }, _react2.default.createElement("h1", null, "This is the About Page.")));
 	};
 	
 	exports.default = About;

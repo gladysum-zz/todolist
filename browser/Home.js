@@ -31,20 +31,23 @@ class Home extends React.Component {
     }
     else {
        let input = this.state.value;
-
-       // Clear the user input field upon submit
-       this.setState({
-         value: ''
-       });
-
-       // Send input to database; add the new task to the redux store
+       // Write new task to database
        axios.post('/tasks', {input: input})
        .then(res=>{
-         this.props.add(res.data.name);
+          let newTask = {
+            id: res.data.id,
+            content: res.data.content
+          };
+          // Update redux store with new task
+          this.props.add(newTask);
+          // Clear the input field
+          this.setState({
+            value: ''
+          });
        })
        .catch(error=>{console.log(error)});
-      }
     }
+  }
 
   render() {
     return (

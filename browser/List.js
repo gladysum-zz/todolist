@@ -13,7 +13,7 @@ class List extends React.Component {
         {this.props.tasks.length ? this.props.tasks.map((task, index)=>(
           <Task
             task={task}
-            index={index}
+            key={task.id}
           />
         )) : "No tasks added."}
       </ol>

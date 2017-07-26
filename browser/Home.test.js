@@ -25,12 +25,6 @@ describe('Home Component', () => {
     expect(inputField.text()).toBe('Wash Dishes');
   });
 
-  it('When user enters text into input field and hits Submit, the input field becomes empty', () => {
-    inputField.simulate('change', {target: {value: 'Wash Dishes'}});
-    submitButton.simulate('click');
-    expect(inputField.text()).toBe('');
-  });
-
   it('When user enters text into input field and hits Submit, no error message is shown', () => {
     inputField.simulate('change', {target: {value: 'Wash Dishes'}});
     submitButton.simulate('click');

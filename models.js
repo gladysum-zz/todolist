@@ -3,7 +3,7 @@ var db = new Sequelize("postgres://localhost:5432/todolist");
 
 // The Task Model
 var Task = db.define('task', {
-  name: {
+  content: {
     type: Sequelize.STRING
   }
 });

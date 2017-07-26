@@ -5,28 +5,27 @@ import { Provider } from 'react-redux'
 import store from './store';
 
 describe('Task Component', () => {
+  
+  const task = {id: 0, content: 'Make cheese'};
 
-  it('renders the expected task inside the 3rd child of the Task Component', () => {  
-    const todo = { task: 'Buy Milk', index: 0 };
+  it('renders the expected task inside the 3rd child of the Task Component', () => {     
     const wrapper = mount(
       <Provider store={store}>
         <Task
-          task={todo.task}
-          index={todo.index}
+          task={task}
+          key={task.id}
         />
       </Provider>
     );
-    const editButton = wrapper.find('.edit-button');
-    expect(wrapper.childAt(2).text()).toBe(todo.task);
+    expect(wrapper.childAt(2).text()).toBe(task.content);
   });
 
   it('renders a Delete button for the given task', () => {
-    const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(
       <Provider store={store}>
         <Task
-          task={todo.task}
-          index={todo.index}
+          task={task}
+          key={task.id}
         />
       </Provider>
     );
@@ -35,12 +34,11 @@ describe('Task Component', () => {
   });
 
   it('renders an Edit button for the given task', () => {
-    const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(
       <Provider store={store}>
         <Task
-          task={todo.task}
-          index={todo.index}
+          task={task}
+          key={task.id}
         />
       </Provider>
     );
@@ -49,12 +47,11 @@ describe('Task Component', () => {
   });
 
   it('Edit button becomes Save button when clicked', () => {
-    const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(
       <Provider store={store}>
         <Task
-          task={todo.task}
-          index={todo.index}
+          task={task}
+          key={task.id}
         />
       </Provider>
     );
@@ -64,12 +61,11 @@ describe('Task Component', () => {
   });
 
   it('Save button becomes Edit button when clicked', () => {
-    const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(
       <Provider store={store}>
         <Task
-          task={todo.task}
-          index={todo.index}
+          task={task}
+          key={task.id}
         />
       </Provider>
     );
@@ -81,12 +77,11 @@ describe('Task Component', () => {
   });
 
   it('Clicking Edit button makes task field editable', () => {
-    const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(
       <Provider store={store}>
         <Task
-          task={todo.task}
-          index={todo.index}
+          task={task}
+          key={task.id}
         />
       </Provider>
     );
@@ -96,28 +91,26 @@ describe('Task Component', () => {
   });
 
   it('Clicking Edit button sets the "value" prop inside the textarea as the task', () => {
-    const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(
       <Provider store={store}>
         <Task
-          task={todo.task}
-          index={todo.index}
+          task={task}
+          key={task.id}
         />
       </Provider>
     );
     const editButton = wrapper.find('.edit-button');
     editButton.simulate('click');
     const inputField = wrapper.find('.task-editable')
-    expect(inputField.props().value).toBe(todo.task);
+    expect(inputField.props().value).toBe(task.content);
   });
 
   it('User can edit a task after hitting the Edit button', () => {
-    const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(
       <Provider store={store}>
         <Task
-          task={todo.task}
-          index={todo.index}
+          task={task}
+          key={task.id}
         />
       </Provider>
     );
@@ -129,12 +122,11 @@ describe('Task Component', () => {
   });
 
   it('Clicking Save button makes task field read-only', () => {
-    const todo = { task: 'Buy Milk', index: 0 };
     const wrapper = mount(
       <Provider store={store}>
         <Task
-          task={todo.task}
-          index={todo.index}
+          task={task}
+          key={task.id}
         />
       </Provider>
     );

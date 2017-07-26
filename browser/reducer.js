@@ -13,14 +13,14 @@ const reducer = (state = initialState, action) => {
 
     case DROP:
       return Object.assign({}, state, {
-        tasks: state.tasks.filter((task, index) => index !== action.payload)
+        tasks: state.tasks.filter((task) => task.id !== action.payload)
       });
 
     case REPLACE:
-      let newIndex = action.payload.index;
-      let newValue = action.payload.value;
+      let newId = action.payload.id;
+      let newTask = action.payload;
       return Object.assign({}, state, {
-        tasks: state.tasks.map((task, index) => index === newIndex ? newValue : task)
+        tasks: state.tasks.map((task) => task.id === newId ? newTask : task)
       });
 
     default:
@@ -36,21 +36,21 @@ export const REPLACE = 'REPLACE';
 
 /* ------------ ACTION CREATORS ------------------ */
 
-export const add = input => ({
+export const add = newTask => ({
   type: ADD,
-  payload: input
+  payload: newTask
 });
 
-export const drop = index => ({
+export const drop = id => ({
   type: DROP,
-  payload: Number(index)
+  payload: Number(id)
 });
 
-export const replace = (index, value) => ({
+export const replace = (id, content) => ({
   type: REPLACE,
   payload: {
-    index: Number(index),
-    value: value
+    id: Number(id),
+    content: content
   }
 });
 
