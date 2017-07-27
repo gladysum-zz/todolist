@@ -33846,10 +33846,7 @@
 	      var _this2 = this;
 	
 	      _axios2.default.get('/tasks').then(function (res) {
-	        console.log("res.data", res.data);
 	        _this2.props.load_tasks(res.data);
-	      }).catch(function (error) {
-	        console.log(error);
 	      });
 	    }
 	  }, {

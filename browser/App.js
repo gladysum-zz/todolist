@@ -22,10 +22,8 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/tasks')
     .then(res => {
-      console.log("res.data", res.data)
       this.props.load_tasks(res.data);
     })
-    .catch(error=>{console.log(error)});
   }
 
   render() {
