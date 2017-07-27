@@ -33676,7 +33676,7 @@
 	
 	    case LOAD_TASKS:
 	      return Object.assign({}, state, {
-	        tasks: state.tasks.concat(action.payload)
+	        tasks: action.payload
 	      });
 	
 	    default:
