@@ -30174,7 +30174,6 @@
 	        // If new content is non-empty and different from prior content, update task in database and redux store 
 	        else {
 	            _axios2.default.put('/tasks/' + id, { content: newContent }).then(function (res) {
-	              // Update task in redux store
 	              _this3.props.replace(id, newContent);
 	              _this3.setState({
 	                disabled: true,

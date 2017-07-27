@@ -65,7 +65,6 @@ class Task extends React.Component {
     else {
       axios.put('/tasks/' + id, {content: newContent})
       .then(res => {
-        // Update task in redux store
         this.props.replace(id, newContent);  
         this.setState({
           disabled: true,

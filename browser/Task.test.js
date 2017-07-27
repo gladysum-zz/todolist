@@ -3,6 +3,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import store from './store';
+import sinon from 'sinon';
 
 describe('Task Component', () => {
   
@@ -175,6 +176,5 @@ describe('Task Component', () => {
     saveButton.simulate('click');
     expect(wrapper.find('.input-error').text()).toBe('');
   });
-
 
 });
