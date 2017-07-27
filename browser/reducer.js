@@ -23,6 +23,12 @@ const reducer = (state = initialState, action) => {
         tasks: state.tasks.map((task) => task.id === newId ? newTask : task)
       });
 
+    case LOAD_TASKS:
+      return Object.assign({}, state, {
+        tasks: state.tasks.concat(action.payload)
+      });
+ 
+
     default:
       return state;
   }
@@ -33,6 +39,7 @@ const reducer = (state = initialState, action) => {
 export const ADD = 'ADD';
 export const DROP = 'DROP';
 export const REPLACE = 'REPLACE';
+export const LOAD_TASKS = 'LOAD_TASKS';
 
 /* ------------ ACTION CREATORS ------------------ */
 
@@ -53,6 +60,11 @@ export const replace = (id, content) => ({
     content: content
   }
 });
+
+export const load_tasks = tasks => ({
+  type: LOAD_TASKS,
+  payload: tasks
+})
 
 
 /* ------------------ DEFAULT EXPORT ------------------ */

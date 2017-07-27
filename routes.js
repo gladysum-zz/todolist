@@ -5,8 +5,15 @@ module.exports = router;
 const models = require('./models');
 const Task = models.Task;
 
+// Retrieve all tasks from database
+router.get('/tasks', (req, res, next) => {
+	Task.findAll()
+	.then(tasks => res.json(tasks))
+	.catch(next);
+});
+
 // Create a new task
-router.post("/tasks", (req, res, next) => {
+router.post('/tasks', (req, res, next) => {
   Task.create({content: req.body.input})
   .then(task => res.json(task))
   .catch(next);

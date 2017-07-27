@@ -33674,6 +33674,11 @@
 	        })
 	      });
 	
+	    case LOAD_TASKS:
+	      return Object.assign({}, state, {
+	        tasks: state.tasks.concat(action.payload)
+	      });
+	
 	    default:
 	      return state;
 	  }
@@ -33684,6 +33689,7 @@
 	var ADD = exports.ADD = 'ADD';
 	var DROP = exports.DROP = 'DROP';
 	var REPLACE = exports.REPLACE = 'REPLACE';
+	var LOAD_TASKS = exports.LOAD_TASKS = 'LOAD_TASKS';
 	
 	/* ------------ ACTION CREATORS ------------------ */
 	
@@ -33708,6 +33714,13 @@
 	      id: Number(id),
 	      content: content
 	    }
+	  };
+	};
+	
+	var load_tasks = exports.load_tasks = function load_tasks(tasks) {
+	  return {
+	    type: LOAD_TASKS,
+	    payload: tasks
 	  };
 	};
 	
@@ -33747,9 +33760,21 @@
 
 	'use strict';
 	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	}();
 	
 	var _react = __webpack_require__(1);
 	
@@ -33769,8 +33794,34 @@
 	
 	var _About2 = _interopRequireDefault(_About);
 	
+	var _reactRedux = __webpack_require__(353);
+	
+	var _axios = __webpack_require__(396);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _reducer = __webpack_require__(391);
+	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+	
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
 	var routes = [{ path: '/',
@@ -33780,18 +33831,60 @@
 	  main: _About2.default
 	}];
 	
-	var App = function App() {
-	  return _react2.default.createElement(_reactRouterDom.BrowserRouter, null, _react2.default.createElement('div', { className: 'app' }, _react2.default.createElement(_Nav2.default, null), routes.map(function (route, index) {
-	    return _react2.default.createElement(_reactRouterDom.Route, {
-	      key: index,
-	      path: route.path,
-	      exact: route.exact,
-	      component: route.main
-	    });
-	  })));
+	var App = function (_React$Component) {
+	  _inherits(App, _React$Component);
+	
+	  function App() {
+	    _classCallCheck(this, App);
+	
+	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	  }
+	
+	  _createClass(App, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      _axios2.default.get('/tasks').then(function (res) {
+	        console.log("res.data", res.data);
+	        _this2.props.load_tasks(res.data);
+	      }).catch(function (error) {
+	        console.log(error);
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	
+	      return _react2.default.createElement(_reactRouterDom.BrowserRouter, null, _react2.default.createElement('div', { className: 'app' }, _react2.default.createElement(_Nav2.default, null), routes.map(function (route, index) {
+	        return _react2.default.createElement(_reactRouterDom.Route, {
+	          key: index,
+	          path: route.path,
+	          exact: route.exact,
+	          component: route.main
+	        });
+	      })));
+	    }
+	  }]);
+	
+	  return App;
+	}(_react2.default.Component);
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    tasks: state.tasks
+	  };
 	};
 	
-	exports.default = App;
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return {
+	    load_tasks: function load_tasks(tasks) {
+	      dispatch((0, _reducer.load_tasks)(tasks));
+	    }
+	  };
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
 /***/ }),
 /* 394 */
@@ -33918,11 +34011,13 @@
 	        var input = this.state.value;
 	        // Write new task to database
 	        _axios2.default.post('/tasks', { input: input }).then(function (res) {
+	
 	          var newTask = {
 	            id: res.data.id,
 	            content: res.data.content
 	          };
 	          // Update redux store with new task
+	          console.log("newTask", newTask);
 	          _this2.props.add(newTask);
 	          // Clear the input field
 	          _this2.setState({
