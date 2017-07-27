@@ -7,8 +7,8 @@ describe('About', () => {
 	let about = shallow(<About/>);
 
 	it('renders without crashing', () => {
-			const div = document.createElement('div');
-			ReactDOM.render(<About/>, div);
+		const div = document.createElement('div');
+		ReactDOM.render(<About/>, div);
 	});
 
 	it('renders the correct text', () => {
