@@ -7,7 +7,11 @@ const Task = models.Task;
 
 // Retrieve all tasks from database
 router.get('/tasks', (req, res, next) => {
-	Task.findAll()
+	Task.findAll({
+		order: [
+      ['id', 'ASC']
+    ]
+	})
 	.then(tasks => res.json(tasks))
 	.catch(next);
 });
