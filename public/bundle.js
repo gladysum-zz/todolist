@@ -33845,6 +33845,7 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 	
+	      // Load all tasks from database and add them to the redux store
 	      _axios2.default.get('/tasks').then(function (res) {
 	        _this2.props.load_tasks(res.data);
 	      });
@@ -34008,14 +34009,8 @@
 	        var input = this.state.value;
 	        // Write new task to database
 	        _axios2.default.post('/tasks', { input: input }).then(function (res) {
-	
-	          var newTask = {
-	            id: res.data.id,
-	            content: res.data.content
-	          };
-	          // Update redux store with new task
-	          console.log("newTask", newTask);
-	          _this2.props.add(newTask);
+	          // Add new task to redux store
+	          _this2.props.add(res.data);
 	          // Clear the input field
 	          _this2.setState({
 	            value: ''

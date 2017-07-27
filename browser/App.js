@@ -20,6 +20,7 @@ const routes = [
 class App extends React.Component {
   
   componentDidMount() {
+    // Load all tasks from database and add them to the redux store
     axios.get('/tasks')
     .then(res => {
       this.props.load_tasks(res.data);

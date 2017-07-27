@@ -34,14 +34,8 @@ class Home extends React.Component {
        // Write new task to database
        axios.post('/tasks', {input: input})
        .then(res=>{
-
-          let newTask = {
-            id: res.data.id,
-            content: res.data.content
-          };
-          // Update redux store with new task
-          console.log("newTask", newTask)
-          this.props.add(newTask);
+          // Add new task to redux store
+          this.props.add(res.data);
           // Clear the input field
           this.setState({
             value: ''

@@ -27,7 +27,6 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         tasks: action.payload
       });
- 
 
     default:
       return state;
