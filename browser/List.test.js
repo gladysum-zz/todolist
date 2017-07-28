@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import {List} from './List';
 
 describe('List Component', () => {
@@ -8,7 +8,7 @@ describe('List Component', () => {
   	const props = {
   		tasks: []
   	};
-  	const wrapper = mount(<List {...props} />);
+  	const wrapper = shallow(<List {...props} />);
   	expect(wrapper.text()).toBe('No tasks added.');
   });
 
@@ -24,7 +24,5 @@ describe('List Component', () => {
   	const wrapper = shallow(<List {...props} />);
   	expect(wrapper.children()).toHaveLength(3);
   });
-
-
 
 });

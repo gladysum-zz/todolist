@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1501266373657" clover="3.2.0">
-  <project timestamp="1501266373657" name="All files">
-    <metrics statements="90" coveredstatements="66" conditionals="34" coveredconditionals="27" methods="43" coveredmethods="30" elements="167" coveredelements="123" complexity="0" loc="90" ncloc="90" packages="1" files="9" classes="9">
+<coverage generated="1501271583282" clover="3.2.0">
+  <project timestamp="1501271583282" name="All files">
+    <metrics statements="90" coveredstatements="66" conditionals="34" coveredconditionals="27" methods="43" coveredmethods="29" elements="167" coveredelements="122" complexity="0" loc="90" ncloc="90" packages="1" files="9" classes="9">
       <file name="About.js" path="/Users/gladysum/Desktop/todolist/browser/About.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="2" type="stmt"/>
@@ -51,7 +51,7 @@
         <line num="5" count="2" type="stmt"/>
       </file>
       <file name="Task.js" path="/Users/gladysum/Desktop/todolist/browser/Task.js">
-        <metrics statements="29" coveredstatements="18" conditionals="16" coveredconditionals="14" methods="13" coveredmethods="6"/>
+        <metrics statements="29" coveredstatements="18" conditionals="16" coveredconditionals="14" methods="13" coveredmethods="5"/>
         <line num="8" count="11" type="stmt"/>
         <line num="9" count="11" type="stmt"/>
         <line num="15" count="11" type="stmt"/>
@@ -78,7 +78,7 @@
         <line num="69" count="0" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
         <line num="79" count="24" type="stmt"/>
-        <line num="124" count="11" type="stmt"/>
+        <line num="124" count="4" type="stmt"/>
         <line num="126" count="0" type="stmt"/>
         <line num="129" count="0" type="stmt"/>
       </file>
