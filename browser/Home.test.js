@@ -12,8 +12,8 @@ describe('Home Component', () => {
     </Provider>
   );
 
-  const submitButton = wrapper.find('#button');
   const inputField = wrapper.find('.input-field');
+  const submitButton = wrapper.find('#button');
 
   it('Error message is shown when user tries to submit empty task', () => {
     submitButton.simulate('click');

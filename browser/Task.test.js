@@ -1,8 +1,6 @@
 import {Task} from './Task';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import store from './store';
 import sinon from 'sinon';
 
 describe('Task Component', () => {
@@ -52,12 +50,20 @@ describe('Task Component', () => {
     expect(saveButton.text()).toBe('Edit');
   });
 
-  it('Clicking Edit button makes task field editable', () => {
+  it('Clicking Edit button makes task field editable (non-disabled)', () => {
+    const wrapper = mount(<Task {...props}/>);
+    const editButton = wrapper.find('.edit-button');
+    editButton.simulate('click');
+    //expect(wrapper.find('.task-editable').type()).toBe('textarea');
+    expect(wrapper.state().disabled).toBe(false);
+  });
+
+  it('Clicking Edit button transforms the task into a textarea', () => {
     const wrapper = mount(<Task {...props}/>);
     const editButton = wrapper.find('.edit-button');
     editButton.simulate('click');
     expect(wrapper.find('.task-editable').type()).toBe('textarea');
-  });
+  });  
 
   it('Clicking Edit button sets the "value" prop inside the textarea as the task', () => {
     const wrapper = mount(<Task {...props}/>);
