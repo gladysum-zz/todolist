@@ -4,7 +4,7 @@ import {add} from './reducer';
 import axios from 'axios';
 import List from './List';
 
-class Home extends React.Component {
+export class Home extends React.Component {
   constructor() {
     super();
     this.state = {

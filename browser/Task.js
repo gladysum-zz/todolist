@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {drop, replace} from './reducer';
 import axios from 'axios';
 
-class Task extends React.Component {
+export class Task extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

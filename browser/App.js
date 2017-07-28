@@ -17,7 +17,7 @@ const routes = [
   }
 ];
 
-class App extends React.Component {
+export class App extends React.Component {
   
   componentDidMount() {
     // Load all tasks from database and add them to the redux store
@@ -25,6 +25,7 @@ class App extends React.Component {
     .then(res => {
       this.props.load_tasks(res.data);
     })
+    .catch(error=>{console.log(error)});
   }
 
   render() {
