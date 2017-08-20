@@ -1,56 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1501280485431" clover="3.2.0">
-  <project timestamp="1501280485431" name="All files">
-    <metrics statements="90" coveredstatements="67" conditionals="34" coveredconditionals="28" methods="43" coveredmethods="30" elements="167" coveredelements="125" complexity="0" loc="90" ncloc="90" packages="1" files="9" classes="9">
-      <file name="About.js" path="/Users/gladysum/Desktop/todolist/browser/About.js">
+<coverage generated="1501716595062" clover="3.2.0">
+  <project timestamp="1501716595062" name="All files">
+    <metrics statements="118" coveredstatements="46" conditionals="104" coveredconditionals="24" methods="61" coveredmethods="17" elements="283" coveredelements="87" complexity="0" loc="118" ncloc="118" packages="1" files="9" classes="9">
+      <file name="About.js" path="/Users/Gladys/todolist/browser/About.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="3" count="2" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
       </file>
-      <file name="App.js" path="/Users/gladysum/Desktop/todolist/browser/App.js">
-        <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="6"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
+      <file name="App.js" path="/Users/Gladys/todolist/browser/App.js">
+        <metrics statements="21" coveredstatements="0" conditionals="33" coveredconditionals="0" methods="17" coveredmethods="0"/>
+        <line num="1" count="0" type="cond" truecount="0" falsecount="8"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="23"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="39" count="2" type="stmt"/>
-        <line num="53" count="2" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
       </file>
-      <file name="Home.js" path="/Users/gladysum/Desktop/todolist/browser/Home.js">
-        <metrics statements="16" coveredstatements="13" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="6"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="27" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
+      <file name="Home.js" path="/Users/Gladys/todolist/browser/Home.js">
+        <metrics statements="26" coveredstatements="0" conditionals="37" coveredconditionals="0" methods="16" coveredmethods="0"/>
+        <line num="1" count="0" type="cond" truecount="0" falsecount="8"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="cond" truecount="0" falsecount="23"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
-        <line num="49" count="4" type="stmt"/>
-        <line num="85" count="2" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
         <line num="87" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
       </file>
-      <file name="List.js" path="/Users/gladysum/Desktop/todolist/browser/List.js">
-        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
+      <file name="List.js" path="/Users/Gladys/todolist/browser/List.js">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="3"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
         <line num="14" count="3" type="stmt"/>
-        <line num="24" count="3" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
       </file>
-      <file name="Nav.js" path="/Users/gladysum/Desktop/todolist/browser/Nav.js">
+      <file name="Nav.js" path="/Users/Gladys/todolist/browser/Nav.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
       </file>
-      <file name="Task.js" path="/Users/gladysum/Desktop/todolist/browser/Task.js">
+      <file name="Task.js" path="/Users/Gladys/todolist/browser/Task.js">
         <metrics statements="29" coveredstatements="18" conditionals="16" coveredconditionals="14" methods="13" coveredmethods="5"/>
         <line num="8" count="12" type="stmt"/>
         <line num="9" count="12" type="stmt"/>
@@ -78,11 +100,11 @@
         <line num="69" count="0" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
         <line num="79" count="26" type="stmt"/>
-        <line num="124" count="4" type="stmt"/>
+        <line num="124" count="2" type="stmt"/>
         <line num="126" count="0" type="stmt"/>
         <line num="129" count="0" type="stmt"/>
       </file>
-      <file name="index.js" path="/Users/gladysum/Desktop/todolist/browser/index.js">
+      <file name="index.js" path="/Users/Gladys/todolist/browser/index.js">
         <metrics statements="7" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -92,11 +114,11 @@
         <line num="6" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="8" count="0" type="stmt"/>
       </file>
-      <file name="reducer.js" path="/Users/gladysum/Desktop/todolist/browser/reducer.js">
+      <file name="reducer.js" path="/Users/Gladys/todolist/browser/reducer.js">
         <metrics statements="20" coveredstatements="20" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="7"/>
-        <line num="1" count="5" type="stmt"/>
-        <line num="7" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="7" type="cond" truecount="5" falsecount="0"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="7" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="5" type="cond" truecount="5" falsecount="0"/>
         <line num="10" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="3" type="stmt"/>
@@ -105,19 +127,25 @@
         <line num="22" count="1" type="stmt"/>
         <line num="23" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="32" count="3" type="stmt"/>
-        <line num="38" count="5" type="stmt"/>
-        <line num="39" count="5" type="stmt"/>
-        <line num="40" count="5" type="stmt"/>
-        <line num="41" count="5" type="stmt"/>
-        <line num="45" count="5" type="stmt"/>
-        <line num="50" count="5" type="stmt"/>
-        <line num="55" count="5" type="stmt"/>
-        <line num="63" count="5" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="38" count="3" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="50" count="3" type="stmt"/>
+        <line num="55" count="3" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
       </file>
-      <file name="store.js" path="/Users/gladysum/Desktop/todolist/browser/store.js">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="7" count="2" type="stmt"/>
+      <file name="store.js" path="/Users/Gladys/todolist/browser/store.js">
+        <metrics statements="7" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
       </file>
     </metrics>
   </project>
